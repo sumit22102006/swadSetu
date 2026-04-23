@@ -131,7 +131,7 @@ Signup → Choose Plan → Select Centers → Set Preferences → Customize Meal
 
 ## 🛠️ Setup
 
-git clone https://github.com/NDYet/swadSetu.git
+git clone https://github.com/sumit22102006/swadSetu.git
 npm install
 npm run dev
 
