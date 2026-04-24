@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -11,8 +12,8 @@ const Hero = () => {
             Sustainable, healthy, and crafted with the care of a home kitchen.
           </p>
           <div className="flex gap-4">
-            <button className="bg-primary hover:bg-primary-hover text-white px-6 py-2.5 rounded font-semibold text-sm transition-colors">Explore Our Plans</button>
-            <button className="bg-white/10 backdrop-blur-sm border border-white/30 text-white px-6 py-2.5 rounded font-semibold text-sm hover:bg-white/20 transition-colors">View Menu</button>
+            <Link to="/dashboard" className="bg-primary hover:bg-primary-hover text-white px-6 py-2.5 rounded font-semibold text-sm transition-colors text-center">Explore Our Plans</Link>
+            <Link to="/dashboard" className="bg-white/10 backdrop-blur-sm border border-white/30 text-white px-6 py-2.5 rounded font-semibold text-sm hover:bg-white/20 transition-colors text-center">View Menu</Link>
           </div>
         </div>
       </div>

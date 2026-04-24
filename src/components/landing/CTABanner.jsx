@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CTABanner = () => {
   return (
@@ -11,9 +12,9 @@ const CTABanner = () => {
         <p className="text-base opacity-80 mb-8 leading-relaxed">
           Join 5,000+ conscious diners who have traded processed meals for the warmth of home-cooked artisanal food.
         </p>
-        <button className="bg-primary hover:bg-primary-hover text-white px-6 py-2.5 rounded font-semibold text-sm transition-colors">
+        <Link to="/dashboard" className="bg-primary hover:bg-primary-hover text-white px-6 py-2.5 rounded font-semibold text-sm transition-colors text-center inline-block">
           Start Your Subscription
-        </button>
+        </Link>
       </div>
     </section>
   );
