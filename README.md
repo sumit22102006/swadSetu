@@ -1,4 +1,3 @@
-
 # 🍱 swadSetu — Daily Meal Customization App
 
 [🎨 View Figma Design](https://www.figma.com/design/0G1vW5J1TUzcN5xOSTIuRK/Untitled?node-id=0-1&t=ty2KsFQN4h3CN5mP-1)
