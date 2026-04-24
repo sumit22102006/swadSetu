@@ -1,17 +1,17 @@
 import React from 'react';
 
 const KitchenCard = ({ img, title, rating, desc }) => (
-  <div className="kitchen-card">
-    <div className="kitchen-img">
-      <img src={img} alt={title} />
+  <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+    <div className="h-[200px] overflow-hidden">
+      <img src={img} alt={title} className="w-full h-full object-cover transition-transform duration-300 hover:scale-110" />
     </div>
-    <div className="kitchen-info">
-      <div className="kitchen-title-row">
-        <h3>{title}</h3>
-        <div className="rating">★ {rating}</div>
+    <div className="p-5">
+      <div className="flex justify-between items-center mb-2">
+        <h3 className="text-lg font-bold">{title}</h3>
+        <div className="bg-success text-white px-2 py-0.5 rounded text-xs font-semibold">★ {rating}</div>
       </div>
-      <p className="kitchen-desc">{desc}</p>
-      <a href="#" className="view-menu">View Menu</a>
+      <p className="text-text-light text-[0.85rem] mb-4 line-clamp-2">{desc}</p>
+      <a href="#" className="text-primary font-semibold text-[0.85rem] border-b border-primary">View Menu</a>
     </div>
   </div>
 );
@@ -39,16 +39,16 @@ const FeaturedKitchens = () => {
   ];
 
   return (
-    <section className="section-padding bg-light">
+    <section className="py-20 bg-bg-light">
       <div className="container">
-        <div className="featured-header">
+        <div className="flex justify-between items-end mb-10">
           <div>
-            <h2>Featured Kitchens</h2>
-            <p style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>The soul of swadSetu lies in our local artisan partners.</p>
+            <h2 className="text-4xl font-bold mb-1">Featured Kitchens</h2>
+            <p className="text-text-light text-sm">The soul of swadSetu lies in our local artisan partners.</p>
           </div>
-          <a href="#" className="view-all">View All Kitchens →</a>
+          <a href="#" className="text-primary font-semibold text-sm">View All Kitchens →</a>
         </div>
-        <div className="kitchen-grid">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {kitchens.map((k, i) => <KitchenCard key={i} {...k} />)}
         </div>
       </div>

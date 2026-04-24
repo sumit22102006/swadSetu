@@ -2,12 +2,22 @@ import React from 'react';
 
 const Hero = () => {
   return (
-    <section className="hero" style={{ backgroundImage: `url('/images/hero.png')` }}>
-      <div className="container">
-        <div className="hero-content">
-          <h1>The Warmth of a Home-Cooked Meal, Delivered.</h1>
-          <p>Experience authentic regional flavors prepared by local kitchen artisans. Sustainable, healthy, and crafted with the care of a home kitchen.</p>
-          <div className="hero-btns">
+    <section 
+      className="relative h-[85vh] min-h-[600px] flex items-center bg-cover bg-center text-white" 
+      style={{ backgroundImage: `url('/images/hero.png')` }}
+    >
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/50 bg-linear-to-b from-black/60 to-black/30"></div>
+      
+      <div className="container relative z-10">
+        <div className="max-w-[600px]">
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-5">
+            The Warmth of a Home-Cooked Meal, Delivered.
+          </h1>
+          <p className="text-lg mb-9 opacity-90">
+            Experience authentic regional flavors prepared by local kitchen artisans. Sustainable, healthy, and crafted with the care of a home kitchen.
+          </p>
+          <div className="flex gap-4">
             <button className="btn btn-primary">Explore Our Plans</button>
             <button className="btn btn-outline">View Menu</button>
           </div>

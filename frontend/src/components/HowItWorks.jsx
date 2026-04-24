@@ -45,15 +45,21 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="section-padding bg-white">
+    <section className="py-20 bg-white">
       <div className="container">
-        <h2 className="section-title">How It Works</h2>
-        <div className="how-it-works-grid">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-secondary mb-4 relative inline-block after:content-[''] after:block after:w-12 after:h-1 after:bg-primary after:mx-auto after:mt-4">
+            How It Works
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {steps.map((step, index) => (
-            <div key={index} className="work-card">
-              <div className="card-icon">{step.icon}</div>
-              <h3>{step.title}</h3>
-              <p>{step.desc}</p>
+            <div key={index} className="bg-bg-light p-10 rounded-lg text-center transition-all duration-300 hover:bg-white hover:-translate-y-2 hover:shadow-xl">
+              <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-5 text-2xl">
+                {step.icon}
+              </div>
+              <h3 className="text-xl font-bold mb-4">{step.title}</h3>
+              <p className="text-text-light text-sm">{step.desc}</p>
             </div>
           ))}
         </div>
