@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -18,7 +19,7 @@ const Hero = () => {
             Experience authentic regional flavors prepared by local kitchen artisans. Sustainable, healthy, and crafted with the care of a home kitchen.
           </p>
           <div className="flex gap-4">
-            <button className="btn btn-primary">Explore Our Plans</button>
+            <Link to="/signup" className="btn btn-primary">Explore Our Plans</Link>
             <button className="btn btn-outline">View Menu</button>
           </div>
         </div>
@@ -26,5 +27,6 @@ const Hero = () => {
     </section>
   );
 };
+
 
 export default Hero;
