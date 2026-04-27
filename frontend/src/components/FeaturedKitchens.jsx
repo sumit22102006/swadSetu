@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const KitchenCard = ({ img, title, rating, desc }) => (
   <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
@@ -11,7 +12,7 @@ const KitchenCard = ({ img, title, rating, desc }) => (
         <div className="bg-success text-white px-2 py-0.5 rounded text-xs font-semibold">★ {rating}</div>
       </div>
       <p className="text-text-light text-[0.85rem] mb-4 line-clamp-2">{desc}</p>
-      <a href="#" className="text-primary font-semibold text-[0.85rem] border-b border-primary">View Menu</a>
+      <Link to="/menu" className="text-primary font-semibold text-[0.85rem] border-b border-primary">View Menu</Link>
     </div>
   </div>
 );
@@ -46,7 +47,7 @@ const FeaturedKitchens = () => {
             <h2 className="text-4xl font-bold mb-1">Featured Kitchens</h2>
             <p className="text-text-light text-sm">The soul of swadSetu lies in our local artisan partners.</p>
           </div>
-          <a href="#" className="text-primary font-semibold text-sm">View All Kitchens →</a>
+          <Link to="/kitchens" className="text-primary font-semibold text-sm">View All Kitchens →</Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {kitchens.map((k, i) => <KitchenCard key={i} {...k} />)}
