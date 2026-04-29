@@ -8,7 +8,7 @@ const Navbar = () => {
         <div className="text-2xl font-bold text-white"><Link to="/" className="hover:text-primary transition-all">swadSetu</Link></div>
         <ul className="hidden md:flex gap-8">
           <li><Link to="/menu" className="text-primary text-sm font-medium">Menu</Link></li>
-          <li><Link to="/artisans" className="text-white opacity-80 hover:opacity-100 hover:text-primary transition-all text-sm font-medium">Artisans</Link></li>
+
           <li><Link to="/story" className="text-white opacity-80 hover:opacity-100 hover:text-primary transition-all text-sm font-medium">Our Story</Link></li>
           <li><Link to="/subscription" className="text-white opacity-80 hover:opacity-100 hover:text-primary transition-all text-sm font-medium">Subscription</Link></li>
           <li><Link to="/support" className="text-white opacity-80 hover:opacity-100 hover:text-primary transition-all text-sm font-medium">Support</Link></li>

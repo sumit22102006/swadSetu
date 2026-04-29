@@ -38,7 +38,7 @@ const ProfilePage = () => {
   const tiffinTimes = ['Before 11am', '11am-1pm', '1pm-3pm', 'After 3pm'];
 
   return (
-    <div className="min-h-screen bg-[#0f0f0f] font-sans text-gray-800">
+    <div className="min-h-screen flex flex-col bg-[#0f0f0f] font-sans text-gray-800">
       {/* Navbar */}
       <nav className="bg-[#0f0f0f] border-b border-gray-800 px-6 py-4 flex justify-between items-center">
         <div className="flex items-center gap-2">
@@ -60,8 +60,8 @@ const ProfilePage = () => {
       </nav>
 
       {/* Main Content */}
-      <div className="max-w-5xl mx-auto py-8 px-6">
-        <div className="bg-white rounded-xl shadow-2xl overflow-hidden p-8">
+      <div className="flex-1 bg-white w-full p-6 md:p-12 shadow-inner">
+        <div className="w-full mx-auto max-w-[1600px]">
           
           {/* Header */}
           <div className="flex justify-between items-start mb-6">
