@@ -10,6 +10,7 @@ import api from '../services/api';
 import FormField from '../components/FormField';
 import { ChevronRight, ArrowLeft, Check } from 'lucide-react';
 import ThemeToggle from '../components/ThemeToggle';
+import SEO from '../components/SEO';
 
 const validationSchemas = [
   Yup.object({
@@ -81,6 +82,11 @@ const SignupPage = () => {
 
   return (
     <div className="flex min-h-screen w-full bg-[#fffaf7] dark:bg-gray-950 font-sans transition-colors duration-300">
+      <SEO 
+        title="Sign Up" 
+        description="Join SwadSetu today and start your journey with local kitchen artisans. Healthy, home-cooked meals delivered to your doorstep."
+        url="/signup"
+      />
       {/* Left Side - Image */}
       <div 
         className="hidden md:flex flex-[1.2] bg-cover bg-center relative"

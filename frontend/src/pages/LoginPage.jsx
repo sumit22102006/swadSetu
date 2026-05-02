@@ -6,6 +6,7 @@ import { setLoading } from '../store/slices/uiSlice';
 import api from '../services/api';
 import signupBg from '../assets/signup-bg.png';
 import ThemeToggle from '../components/ThemeToggle';
+import SEO from '../components/SEO';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -43,6 +44,11 @@ const LoginPage = () => {
 
   return (
     <div className="flex min-h-screen w-full bg-[#fffaf7] dark:bg-gray-950 font-sans transition-colors duration-300">
+      <SEO 
+        title="Log In" 
+        description="Log in to your SwadSetu account to manage your tiffin subscriptions, meal plans, and active deliveries."
+        url="/login"
+      />
       {/* Left Side - Image */}
       <div 
         className="hidden md:flex flex-[1.2] bg-cover bg-center relative"

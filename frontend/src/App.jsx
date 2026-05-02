@@ -11,6 +11,7 @@ import DeliveriesPage from './pages/DeliveriesPage'
 
 import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
+import { Toaster } from 'react-hot-toast'
 
 function App() {
   const { theme } = useSelector((state) => state.ui);
@@ -28,6 +29,27 @@ function App() {
 
   return (
     <Router>
+      <Toaster 
+        position="top-right"
+        toastOptions={{
+          duration: 4000,
+          style: {
+            background: theme === 'dark' ? '#121212' : '#fff',
+            color: theme === 'dark' ? '#fff' : '#121212',
+            border: theme === 'dark' ? '1px solid #333' : '1px solid #f0f0f0',
+            fontSize: '14px',
+            fontWeight: '600',
+            borderRadius: '12px',
+            padding: '16px 24px',
+          },
+          success: {
+            iconTheme: {
+              primary: '#f97316',
+              secondary: '#fff',
+            },
+          },
+        }}
+      />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignupPage />} />

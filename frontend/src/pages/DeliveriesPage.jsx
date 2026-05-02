@@ -24,6 +24,7 @@ import { addAddress, setCurrentAddress } from '../store/slices/userSlice';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import ThemeToggle from '../components/ThemeToggle';
+import SEO from '../components/SEO';
 
 // Fix for Leaflet default icon issue in React
 import icon from 'leaflet/dist/images/marker-icon.png';
@@ -218,6 +219,7 @@ const DeliveriesPage = () => {
 
   return (
     <div className="flex min-h-screen bg-[#f8f9fa] dark:bg-gray-950 text-gray-800 dark:text-gray-200 font-sans transition-colors duration-300">
+      <SEO title="Track Deliveries" url="/deliveries" />
       <Sidebar />
 
       <div className="flex-1 flex flex-col">

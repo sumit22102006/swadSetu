@@ -7,6 +7,7 @@ import FeaturedKitchens from '../components/FeaturedKitchens';
 import ZeroWaste from '../components/ZeroWaste';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -20,6 +21,11 @@ const LandingPage = () => {
 
   return (
     <div className="home-page">
+      <SEO 
+        title="Artisan Tiffin Service" 
+        description="Discover healthy, home-cooked meals from local kitchen artisans. SwadSetu connects you with authentic flavors and zero-waste tiffin deliveries."
+        url="/"
+      />
       <Navbar />
       <Hero />
       <HowItWorks />

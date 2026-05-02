@@ -18,6 +18,8 @@ import {
 import { Link } from 'react-router-dom';
 import ThemeToggle from '../components/ThemeToggle';
 import api from '../services/api';
+import toast from 'react-hot-toast';
+import SEO from '../components/SEO';
 
 const SupportPage = () => {
   const [openFaq, setOpenFaq] = useState(0);
@@ -56,6 +58,11 @@ const SupportPage = () => {
 
   return (
     <div className="min-h-screen bg-[#f8f9fa] dark:bg-gray-950 font-sans text-gray-800 dark:text-gray-200 pb-12 transition-colors duration-300">
+      <SEO 
+        title="Help Center" 
+        description="Need help with your SwadSetu tiffin service? Find answers to FAQs, track orders, manage subscriptions, or contact our artisan support team."
+        url="/support"
+      />
       {/* Header */}
       <header className="bg-[#121212] dark:bg-[#000000] text-white pt-8 pb-24 px-6 relative overflow-hidden transition-colors">
         <div className="absolute top-0 right-0 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl -mr-20 -mt-20"></div>
@@ -222,14 +229,14 @@ const SupportPage = () => {
                   });
                   
                   if (response.ok) {
-                    alert('Your support request has been sent successfully!');
+                    toast.success('Your support request has been sent successfully!');
                     e.target.reset();
                   } else {
                     throw new Error('Formspree submission failed');
                   }
                 } catch (error) {
                   console.error('Failed to send support request:', error);
-                  alert('Failed to send request. Please try again later or use the "Send Email" card.');
+                  toast.error('Failed to send request. Please try again later.');
                 }
               }}
               className="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl shadow-gray-200/50 dark:shadow-none overflow-hidden border border-gray-100 dark:border-gray-800 sticky top-24 transition-colors"

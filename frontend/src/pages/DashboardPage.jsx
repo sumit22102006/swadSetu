@@ -15,6 +15,7 @@ import {
   RefreshCw,
   Check
 } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const DashboardPage = () => {
   const [isSkipped, setIsSkipped] = useState(false);
@@ -66,6 +67,7 @@ const DashboardPage = () => {
 
   return (
     <div className="flex min-h-screen bg-[#f8f9fa] dark:bg-[#0f0f0f] text-gray-800 dark:text-gray-200 font-sans transition-colors duration-300">
+      <SEO title="Dashboard" url="/dashboard" />
       <Sidebar />
 
       <div className="flex-1 flex flex-col">

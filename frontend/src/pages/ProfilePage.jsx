@@ -10,6 +10,8 @@ import { setCredentials } from '../store/slices/authSlice';
 import { setLoading } from '../store/slices/uiSlice';
 import { setProfile } from '../store/slices/userSlice';
 import api from '../services/api';
+import toast from 'react-hot-toast';
+import SEO from '../components/SEO';
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
@@ -65,8 +67,10 @@ const ProfilePage = () => {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       setImagePreview(data.image);
+      toast.success('Image uploaded successfully');
     } catch (error) {
       console.error('Image upload failed', error);
+      toast.error('Image upload failed');
     } finally {
       setUploadingImage(false);
     }
@@ -85,8 +89,10 @@ const ProfilePage = () => {
       dispatch(setProfile(data));
       dispatch(setCredentials({ ...userInfo, ...data }));
       setIsEditing(false);
+      toast.success('Profile updated successfully');
     } catch (error) {
       console.error('Profile update failed', error);
+      toast.error(error.response?.data?.message || 'Profile update failed');
     }
   };
 
@@ -94,6 +100,7 @@ const ProfilePage = () => {
 
   return (
     <div className="flex min-h-screen bg-[#f8f9fa] dark:bg-gray-950 text-gray-800 dark:text-gray-200 font-sans transition-colors duration-300">
+      <SEO title="My Profile" url="/profile" />
       <Sidebar />
 
       <div className="flex-1 flex flex-col">

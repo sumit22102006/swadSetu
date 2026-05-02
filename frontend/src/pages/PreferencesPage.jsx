@@ -7,6 +7,8 @@ import {
 } from 'lucide-react';
 import ThemeToggle from '../components/ThemeToggle';
 import Sidebar from '../components/Sidebar';
+import toast from 'react-hot-toast';
+import SEO from '../components/SEO';
 
 const PreferencesPage = () => {
   const { profile: user } = useSelector((state) => state.user);
@@ -33,6 +35,7 @@ const PreferencesPage = () => {
 
   return (
     <div className="flex min-h-screen bg-[#f8f9fa] dark:bg-gray-950 text-gray-800 dark:text-gray-200 font-sans transition-colors duration-300">
+      <SEO title="Dietary Preferences" url="/preferences" />
       <Sidebar />
 
       <div className="flex-1 flex flex-col">
@@ -212,7 +215,10 @@ const PreferencesPage = () => {
 
             <div className="mt-12 flex items-center justify-end gap-6">
               <button className="text-[10px] font-black text-gray-400 uppercase tracking-widest hover:text-gray-600 transition-colors">Discard changes</button>
-              <button className="bg-orange-600 text-white px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-orange-500/20 hover:bg-orange-700 hover:scale-105 active:scale-95 transition-all">
+              <button 
+                onClick={() => toast.success('Preferences saved successfully')}
+                className="bg-orange-600 text-white px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-orange-500/20 hover:bg-orange-700 hover:scale-105 active:scale-95 transition-all"
+              >
                 Save preferences
               </button>
             </div>
