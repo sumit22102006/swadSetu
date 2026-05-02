@@ -5,6 +5,7 @@ import {
   Info, CheckCircle, Leaf, Landmark, Activity, Flame, Monitor, 
   Plus, X, Bell, User, HandPlatter, Camera, Edit3, Loader, Drumstick
 } from 'lucide-react';
+import ThemeToggle from '../components/ThemeToggle';
 import { setCredentials } from '../store/slices/authSlice';
 import { setLoading } from '../store/slices/uiSlice';
 import { setProfile } from '../store/slices/userSlice';
@@ -112,21 +113,22 @@ const ProfilePage = () => {
   if (isLoading) return <div className="min-h-screen flex items-center justify-center bg-[#0f0f0f]"><Loader className="w-8 h-8 text-orange-500 animate-spin" /></div>;
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#0f0f0f] font-sans text-gray-800">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 font-sans text-gray-800 dark:text-gray-200 transition-colors duration-300">
       {/* Navbar */}
-      <nav className="bg-[#0f0f0f] border-b border-gray-800 px-6 py-4 flex justify-between items-center">
+      <nav className="bg-white dark:bg-[#0f0f0f] border-b border-gray-100 dark:border-gray-800 px-6 py-4 flex justify-between items-center transition-colors">
         <div className="flex items-center gap-2">
-          <Link to="/" className="text-2xl font-bold text-white tracking-tight">SwadSetu<span className="text-orange-500">.</span></Link>
+          <Link to="/" className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">SwadSetu<span className="text-orange-500">.</span></Link>
         </div>
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
-          <Link to="/" className="hover:text-white transition-colors">Home</Link>
-          <Link to="/menu" className="hover:text-white transition-colors">Menu</Link>
-          <Link to="/dashboard" className="hover:text-white transition-colors">Dashboard</Link>
-          <Link to="/profile" className="text-white border-b-2 border-orange-500 pb-1">Profile</Link>
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-500 dark:text-gray-400">
+          <Link to="/" className="hover:text-gray-900 dark:hover:text-white transition-colors">Home</Link>
+          <Link to="/menu" className="hover:text-gray-900 dark:hover:text-white transition-colors">Menu</Link>
+          <Link to="/dashboard" className="hover:text-gray-900 dark:hover:text-white transition-colors">Dashboard</Link>
+          <Link to="/profile" className="text-gray-900 dark:text-white border-b-2 border-orange-500 pb-1">Profile</Link>
         </div>
         <div className="flex items-center gap-4">
+          <ThemeToggle />
           <button className="bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-semibold hover:bg-orange-700 transition-colors">Go Premium</button>
-          <Bell className="w-5 h-5 text-gray-400 cursor-pointer hover:text-white" />
+          <Bell className="w-5 h-5 text-gray-400 cursor-pointer hover:text-gray-900 dark:hover:text-white" />
           <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white overflow-hidden cursor-pointer">
             {user?.profileImage ? (
               <img src={`/api${user.profileImage}`} alt="Profile" className="w-full h-full object-cover" onError={(e) => e.target.src = user.profileImage} />
@@ -138,14 +140,14 @@ const ProfilePage = () => {
       </nav>
 
       {/* Main Content */}
-      <div className="flex-1 bg-white w-full p-6 md:p-12 shadow-inner">
+      <div className="flex-1 bg-white dark:bg-gray-950 w-full p-6 md:p-12 shadow-inner transition-colors duration-300">
         <div className="w-full mx-auto max-w-[1600px]">
           
           {/* Personal Information Section */}
-          <div className="bg-orange-50 border border-orange-100 rounded-2xl p-8 mb-10 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-orange-200/40 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none"></div>
+          <div className="bg-orange-50 dark:bg-orange-500/5 border border-orange-100 dark:border-orange-500/10 rounded-2xl p-8 mb-10 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden transition-colors">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-orange-200/40 dark:bg-orange-500/5 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none"></div>
             
-            <div className="relative z-10 w-32 h-32 rounded-full border-4 border-white shadow-xl bg-gray-100 flex items-center justify-center overflow-hidden shrink-0">
+            <div className="relative z-10 w-32 h-32 rounded-full border-4 border-white dark:border-gray-800 shadow-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center overflow-hidden shrink-0">
               {user?.profileImage ? (
                 <img src={`/api${user.profileImage}`} alt={user.name} className="w-full h-full object-cover" onError={(e) => e.target.src = user.profileImage} />
               ) : (
@@ -154,14 +156,14 @@ const ProfilePage = () => {
             </div>
             
             <div className="relative z-10 flex-1 text-center md:text-left">
-              <h1 className="text-3xl font-bold text-gray-900">{user?.name}</h1>
-              <p className="text-gray-600 mt-1">{user?.email}</p>
-              {user?.phone && <p className="text-gray-500 text-sm mt-1">{user.phone}</p>}
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">{user?.name}</h1>
+              <p className="text-gray-600 dark:text-gray-400 mt-1">{user?.email}</p>
+              {user?.phone && <p className="text-gray-500 dark:text-gray-500 text-sm mt-1">{user.phone}</p>}
             </div>
             
             <button 
               onClick={() => setIsEditing(true)}
-              className="relative z-10 bg-white border border-gray-200 text-gray-700 px-5 py-2.5 rounded-lg text-sm font-bold shadow-sm hover:bg-gray-50 transition-all flex items-center gap-2"
+              className="relative z-10 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 px-5 py-2.5 rounded-lg text-sm font-bold shadow-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-all flex items-center gap-2"
             >
               <Edit3 className="w-4 h-4" /> Edit Profile
             </button>
@@ -170,10 +172,10 @@ const ProfilePage = () => {
           {/* Edit Profile Modal */}
           {isEditing && (
             <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
-              <div className="bg-white rounded-2xl w-full max-w-md p-6 shadow-2xl animate-in fade-in zoom-in duration-200">
+              <div className="bg-white dark:bg-gray-900 rounded-2xl w-full max-w-md p-6 shadow-2xl animate-in fade-in zoom-in duration-200">
                 <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-xl font-bold text-gray-900">Edit Profile</h2>
-                  <button onClick={() => setIsEditing(false)} className="text-gray-400 hover:text-gray-600">
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-white">Edit Profile</h2>
+                  <button onClick={() => setIsEditing(false)} className="text-gray-400 hover:text-gray-600 dark:hover:text-white">
                     <X className="w-5 h-5" />
                   </button>
                 </div>
@@ -181,7 +183,7 @@ const ProfilePage = () => {
                 <form onSubmit={submitProfileHandler} className="space-y-5">
                   <div className="flex justify-center mb-6">
                     <div className="relative group">
-                      <div className="w-24 h-24 rounded-full border-2 border-dashed border-gray-300 bg-gray-50 flex items-center justify-center overflow-hidden">
+                      <div className="w-24 h-24 rounded-full border-2 border-dashed border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 flex items-center justify-center overflow-hidden transition-colors">
                         {imagePreview ? (
                           <img src={imagePreview.startsWith('http') ? imagePreview : `/api${imagePreview}`} alt="Preview" className="w-full h-full object-cover" onError={(e) => e.target.src = imagePreview} />
                         ) : (
@@ -205,21 +207,21 @@ const ProfilePage = () => {
                   <div className="space-y-4">
                     <div>
                       <label className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1 block">Full Name</label>
-                      <input type="text" value={editName} onChange={(e) => setEditName(e.target.value)} className="w-full p-2.5 border border-gray-200 rounded-lg text-sm focus:border-orange-500 outline-none" required />
+                      <input type="text" value={editName} onChange={(e) => setEditName(e.target.value)} className="w-full p-2.5 border border-gray-200 dark:border-gray-800 rounded-lg text-sm focus:border-orange-500 outline-none bg-white dark:bg-gray-800 dark:text-white transition-colors" required />
                     </div>
                     <div>
                       <label className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1 block">Email</label>
-                      <input type="email" value={editEmail} onChange={(e) => setEditEmail(e.target.value)} className="w-full p-2.5 border border-gray-200 rounded-lg text-sm focus:border-orange-500 outline-none" required />
+                      <input type="email" value={editEmail} onChange={(e) => setEditEmail(e.target.value)} className="w-full p-2.5 border border-gray-200 dark:border-gray-800 rounded-lg text-sm focus:border-orange-500 outline-none bg-white dark:bg-gray-800 dark:text-white transition-colors" required />
                     </div>
                     <div>
                       <label className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1 block">Phone Number</label>
-                      <input type="tel" value={editPhone} onChange={(e) => setEditPhone(e.target.value)} className="w-full p-2.5 border border-gray-200 rounded-lg text-sm focus:border-orange-500 outline-none" />
+                      <input type="tel" value={editPhone} onChange={(e) => setEditPhone(e.target.value)} className="w-full p-2.5 border border-gray-200 dark:border-gray-800 rounded-lg text-sm focus:border-orange-500 outline-none bg-white dark:bg-gray-800 dark:text-white transition-colors" />
                     </div>
                   </div>
                   
                   <div className="flex gap-3 mt-8">
-                    <button type="button" onClick={() => setIsEditing(false)} className="flex-1 py-2.5 border border-gray-200 text-gray-600 rounded-lg text-sm font-bold hover:bg-gray-50">Cancel</button>
-                    <button type="submit" className="flex-1 py-2.5 bg-orange-600 text-white rounded-lg text-sm font-bold shadow-md hover:bg-orange-700">Save Changes</button>
+                    <button type="button" onClick={() => setIsEditing(false)} className="flex-1 py-2.5 border border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-400 rounded-lg text-sm font-bold hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">Cancel</button>
+                    <button type="submit" className="flex-1 py-2.5 bg-orange-600 text-white rounded-lg text-sm font-bold shadow-md hover:bg-orange-700 transition-colors">Save Changes</button>
                   </div>
                 </form>
               </div>
@@ -227,14 +229,14 @@ const ProfilePage = () => {
           )}
 
           {/* Preferences Header */}
-          <div className="flex justify-between items-start mb-6 border-t border-gray-100 pt-10">
+          <div className="flex justify-between items-start mb-6 border-t border-gray-100 dark:border-gray-800 pt-10 transition-colors">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Dietary Preferences</h1>
-              <p className="text-gray-500 text-sm mt-1">These global settings apply to all your delivery centers automatically.</p>
+              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Dietary Preferences</h1>
+              <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">These global settings apply to all your delivery centers automatically.</p>
             </div>
-            <div className="flex items-center gap-2 bg-green-50 px-3 py-1.5 rounded-full border border-green-100">
+            <div className="flex items-center gap-2 bg-green-50 dark:bg-green-500/10 px-3 py-1.5 rounded-full border border-green-100 dark:border-green-500/20 transition-colors">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-green-700 text-xs font-semibold">All centers synced</span>
+              <span className="text-green-700 dark:text-green-400 text-xs font-semibold">All centers synced</span>
             </div>
           </div>
 
@@ -256,16 +258,16 @@ const ProfilePage = () => {
                     onClick={() => setSelectedDiet(diet.id)}
                     className={`flex items-start gap-4 p-4 rounded-xl border transition-all cursor-pointer ${
                       selectedDiet === diet.id 
-                      ? 'bg-white border-orange-500 shadow-sm' 
-                      : 'bg-white/50 border-gray-100 hover:border-gray-200'
+                      ? 'bg-white dark:bg-gray-900 border-orange-500 shadow-sm' 
+                      : 'bg-white/50 dark:bg-gray-900/50 border-gray-100 dark:border-gray-800 hover:border-gray-200 dark:hover:border-gray-700'
                     }`}
                   >
-                    <div className={`p-2 rounded-lg ${selectedDiet === diet.id ? 'bg-orange-50' : 'bg-gray-100'}`}>
+                    <div className={`p-2 rounded-lg ${selectedDiet === diet.id ? 'bg-orange-50 dark:bg-orange-500/10' : 'bg-gray-100 dark:bg-gray-800'}`}>
                       {diet.icon}
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 text-sm">{diet.title}</h3>
-                      <p className="text-gray-500 text-xs mt-0.5">{diet.desc}</p>
+                      <h3 className="font-semibold text-gray-900 dark:text-white text-sm">{diet.title}</h3>
+                      <p className="text-gray-500 dark:text-gray-400 text-xs mt-0.5">{diet.desc}</p>
                     </div>
                     {selectedDiet === diet.id && (
                       <div className="ml-auto">
@@ -280,8 +282,8 @@ const ProfilePage = () => {
             {/* Right Column */}
             <div className="space-y-6">
               {/* Spiciness */}
-              <div className="border border-gray-100 rounded-xl p-6 bg-gray-50/50">
-                <h2 className="text-lg font-semibold text-gray-900 mb-4">How spicy do you like it?</h2>
+              <div className="border border-gray-100 dark:border-gray-800 rounded-xl p-6 bg-gray-50/50 dark:bg-gray-900/30 transition-colors">
+                <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">How spicy do you like it?</h2>
                 <div className="flex flex-wrap gap-2">
                   {spicinessLevels.map((level) => (
                     <button

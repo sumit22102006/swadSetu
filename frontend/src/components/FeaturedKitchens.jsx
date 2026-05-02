@@ -2,16 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const KitchenCard = ({ img, title, rating, desc }) => (
-  <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+  <div className="bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-transparent dark:border-gray-800">
     <div className="h-[200px] overflow-hidden">
       <img src={img} alt={title} className="w-full h-full object-cover transition-transform duration-300 hover:scale-110" />
     </div>
     <div className="p-5">
       <div className="flex justify-between items-center mb-2">
-        <h3 className="text-lg font-bold">{title}</h3>
+        <h3 className="text-lg font-bold dark:text-white transition-colors">{title}</h3>
         <div className="bg-success text-white px-2 py-0.5 rounded text-xs font-semibold">★ {rating}</div>
       </div>
-      <p className="text-text-light text-[0.85rem] mb-4 line-clamp-2">{desc}</p>
+      <p className="text-text-light dark:text-gray-400 text-[0.85rem] mb-4 line-clamp-2 transition-colors">{desc}</p>
       <Link to="/menu" className="text-primary font-semibold text-[0.85rem] border-b border-primary">View Menu</Link>
     </div>
   </div>
@@ -40,12 +40,12 @@ const FeaturedKitchens = () => {
   ];
 
   return (
-    <section className="py-20 bg-bg-light">
+    <section className="py-20 bg-bg-light dark:bg-gray-950 transition-colors duration-300">
       <div className="container">
         <div className="flex justify-between items-end mb-10">
           <div>
-            <h2 className="text-4xl font-bold mb-1">Featured Kitchens</h2>
-            <p className="text-text-light text-sm">The soul of swadSetu lies in our local artisan partners.</p>
+            <h2 className="text-4xl font-bold mb-1 dark:text-white">Featured Kitchens</h2>
+            <p className="text-text-light dark:text-gray-400 text-sm">The soul of swadSetu lies in our local artisan partners.</p>
           </div>
           <Link to="/kitchens" className="text-primary font-semibold text-sm">View All Kitchens →</Link>
         </div>

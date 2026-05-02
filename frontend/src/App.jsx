@@ -8,7 +8,23 @@ import DashboardPage from './pages/DashboardPage'
 import MealPlanPage from './pages/MealPlanPage'
 import DeliveriesPage from './pages/DeliveriesPage'
 
+import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
+
 function App() {
+  const { theme } = useSelector((state) => state.ui);
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    if (theme === 'dark') {
+      root.classList.add('dark');
+      document.body.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+      document.body.classList.remove('dark');
+    }
+  }, [theme]);
+
   return (
     <Router>
       <Routes>

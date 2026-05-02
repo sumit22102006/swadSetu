@@ -23,6 +23,7 @@ import { Search, Loader, ArrowLeft } from 'lucide-react';
 import { addAddress, setCurrentAddress } from '../store/slices/userSlice';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import ThemeToggle from '../components/ThemeToggle';
 
 // Fix for Leaflet default icon issue in React
 import icon from 'leaflet/dist/images/marker-icon.png';
@@ -216,12 +217,12 @@ const DeliveriesPage = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-[#f8f9fa] text-gray-800 font-sans">
+    <div className="flex min-h-screen bg-[#f8f9fa] dark:bg-gray-950 text-gray-800 dark:text-gray-200 font-sans transition-colors duration-300">
       <Sidebar />
 
       <div className="flex-1 flex flex-col">
         {/* Header */}
-        <header className="bg-[#121212] px-8 py-4 flex justify-between items-center sticky top-0 z-40 shadow-xl">
+        <header className="bg-[#121212] dark:bg-[#000000] px-8 py-4 flex justify-between items-center sticky top-0 z-40 shadow-xl transition-colors">
           <div className="flex items-center gap-3">
             <div className="w-2.5 h-2.5 bg-orange-500 rounded-full animate-pulse"></div>
             <span className="text-xl font-bold text-white tracking-tight">swadSetu</span>
@@ -231,6 +232,7 @@ const DeliveriesPage = () => {
               <Star className="w-3 h-3 fill-orange-400" />
               Standard Plan
             </div>
+            <ThemeToggle />
             <Link to="/profile" className="w-9 h-9 bg-gradient-to-tr from-orange-500 to-orange-400 rounded-full flex items-center justify-center text-white cursor-pointer overflow-hidden ring-2 ring-gray-800 hover:ring-orange-500/50 transition-all">
               <User className="w-5 h-5" />
             </Link>
@@ -240,21 +242,21 @@ const DeliveriesPage = () => {
         {/* Main Content */}
         <main className="p-8 lg:p-12 max-w-6xl w-full mx-auto">
           <div className="mb-12">
-            <h1 className="text-4xl font-black text-gray-900 mb-2 tracking-tight">Deliveries</h1>
-            <p className="text-gray-500 font-medium">Track your active meals and view order history.</p>
+            <h1 className="text-4xl font-black text-gray-900 dark:text-white mb-2 tracking-tight transition-colors">Deliveries</h1>
+            <p className="text-gray-500 dark:text-gray-400 font-medium transition-colors">Track your active meals and view order history.</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {/* Left Column: Active Tracking */}
             <div className="lg:col-span-2 space-y-8">
               {/* Active Delivery Card */}
-              <div className="bg-white rounded-3xl shadow-xl shadow-gray-200/50 border border-gray-100 overflow-hidden">
-                <div className="p-8 border-b border-gray-50 flex justify-between items-center">
+              <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-gray-800 overflow-hidden transition-colors">
+                <div className="p-8 border-b border-gray-50 dark:border-gray-800 flex justify-between items-center">
                   <div>
                     <span className="text-[10px] font-black text-orange-500 uppercase tracking-[0.2em] mb-1 block">Active Delivery</span>
-                    <h2 className="text-2xl font-black text-gray-900">Paneer Lababdar & Roti</h2>
+                    <h2 className="text-2xl font-black text-gray-900 dark:text-white transition-colors">Paneer Lababdar & Roti</h2>
                   </div>
-                  <div className="bg-green-50 text-green-600 px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest">
+                  <div className="bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-green-400 px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-colors">
                     Out for Delivery
                   </div>
                 </div>
@@ -263,7 +265,7 @@ const DeliveriesPage = () => {
                   {/* Tracking Stepper */}
                   <div className="relative flex justify-between mb-12">
                     {/* Progress Line */}
-                    <div className="absolute top-5 left-0 w-full h-0.5 bg-gray-100">
+                    <div className="absolute top-5 left-0 w-full h-0.5 bg-gray-100 dark:bg-gray-800">
                       <div className="h-full bg-orange-500 w-[70%] transition-all duration-1000"></div>
                     </div>
 
@@ -271,15 +273,15 @@ const DeliveriesPage = () => {
                       <div key={idx} className="relative flex flex-col items-center group">
                         <div className={`w-10 h-10 rounded-full flex items-center justify-center border-4 transition-all duration-300 relative z-10 ${
                           step.completed 
-                          ? 'bg-orange-500 border-white text-white shadow-lg shadow-orange-200' 
+                          ? 'bg-orange-500 border-white dark:border-gray-900 text-white shadow-lg shadow-orange-200 dark:shadow-none' 
                           : step.active 
-                            ? 'bg-white border-orange-500 text-orange-500 shadow-lg animate-pulse'
-                            : 'bg-white border-gray-100 text-gray-300'
+                            ? 'bg-white dark:bg-gray-900 border-orange-500 text-orange-500 shadow-lg animate-pulse'
+                            : 'bg-white dark:bg-gray-900 border-gray-100 dark:border-gray-800 text-gray-300'
                         }`}>
                           {step.completed ? <CheckCircle2 className="w-5 h-5" /> : <Package className="w-5 h-5" />}
                         </div>
                         <div className="mt-4 text-center">
-                          <p className={`text-[10px] font-black uppercase tracking-widest ${step.active || step.completed ? 'text-gray-900' : 'text-gray-400'}`}>
+                          <p className={`text-[10px] font-black uppercase tracking-widest transition-colors ${step.active || step.completed ? 'text-gray-900 dark:text-white' : 'text-gray-400'}`}>
                             {step.name}
                           </p>
                           <p className="text-[10px] font-bold text-gray-400 mt-0.5">{step.time}</p>
@@ -289,9 +291,9 @@ const DeliveriesPage = () => {
                   </div>
 
                   {/* Delivery Partner Info */}
-                  <div className="bg-gray-50 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-6">
+                  <div className="bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-6 transition-colors">
                     <div className="flex items-center gap-4">
-                      <div className="w-14 h-14 bg-white rounded-full border border-gray-100 flex items-center justify-center text-gray-400 shadow-sm overflow-hidden">
+                      <div className="w-14 h-14 bg-white dark:bg-gray-900 rounded-full border border-gray-100 dark:border-gray-700 flex items-center justify-center text-gray-400 shadow-sm overflow-hidden transition-colors">
                         <img 
                           src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&q=80&w=100" 
                           alt="Rohan" 
@@ -300,7 +302,7 @@ const DeliveriesPage = () => {
                       </div>
                       <div>
                         <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-0.5">Your Delivery Partner</p>
-                        <p className="font-black text-gray-900">Rohan Sharma</p>
+                        <p className="font-black text-gray-900 dark:text-white">Rohan Sharma</p>
                         <div className="flex items-center gap-1 mt-1">
                           <Star className="w-3 h-3 text-orange-500 fill-orange-500" />
                           <span className="text-[10px] font-bold text-gray-600">4.9 (2,400+ deliveries)</span>
@@ -308,12 +310,12 @@ const DeliveriesPage = () => {
                       </div>
                     </div>
                     <div className="flex gap-3 w-full md:w-auto">
-                      <button className="flex-1 md:flex-none bg-white border border-gray-200 text-gray-600 px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2 hover:border-orange-500 hover:text-orange-600 transition-all">
+                      <button className="flex-1 md:flex-none bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-400 px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2 hover:border-orange-500 hover:text-orange-600 transition-all">
                         <Phone className="w-3.5 h-3.5" /> Call Rohan
                       </button>
                       <button 
                         onClick={() => setIsMapOpen(true)}
-                        className="flex-1 md:flex-none bg-orange-600 text-white px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-orange-200 hover:bg-orange-700 transition-all flex items-center justify-center gap-2"
+                        className="flex-1 md:flex-none bg-orange-600 text-white px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-orange-200 dark:shadow-none hover:bg-orange-700 transition-all flex items-center justify-center gap-2"
                       >
                         <Navigation className="w-3.5 h-3.5" /> Live Map
                       </button>
@@ -323,7 +325,7 @@ const DeliveriesPage = () => {
               </div>
 
               {/* Delivery History Section */}
-              <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
+              <div className="bg-white dark:bg-gray-900 rounded-3xl p-8 border border-gray-100 dark:border-gray-800 shadow-sm transition-colors">
                 <div className="flex justify-between items-center mb-8">
                   <h3 className="text-[11px] font-black text-gray-900 uppercase tracking-[0.2em]">Order History</h3>
                   <div className="flex bg-gray-50 p-1 rounded-lg">
@@ -357,9 +359,9 @@ const DeliveriesPage = () => {
                             <span className="text-[10px] font-bold text-gray-400">{order.id}</span>
                           </div>
                           <div className="flex items-center gap-3">
-                            <span className="text-[10px] font-bold text-gray-500 uppercase tracking-tighter">{order.kitchen}</span>
-                            <span className="text-[10px] font-bold text-gray-300">•</span>
-                            <span className="text-[10px] font-bold text-gray-500 uppercase tracking-tighter">{order.date}</span>
+                            <span className="text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-tighter transition-colors">{order.kitchen}</span>
+                            <span className="text-[10px] font-bold text-gray-300 dark:text-gray-700">•</span>
+                            <span className="text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-tighter transition-colors">{order.date}</span>
                           </div>
                         </div>
                       </div>
@@ -367,12 +369,12 @@ const DeliveriesPage = () => {
                         <div className="hidden md:flex flex-col items-end">
                           <div className="flex gap-0.5 mb-1">
                             {[...Array(5)].map((_, i) => (
-                              <Star key={i} className={`w-2.5 h-2.5 ${i < order.rating ? 'text-orange-500 fill-orange-500' : 'text-gray-200'}`} />
+                              <Star key={i} className={`w-2.5 h-2.5 ${i < order.rating ? 'text-orange-500 fill-orange-500' : 'text-gray-200 dark:text-gray-700'}`} />
                             ))}
                           </div>
-                          <span className="text-[10px] font-black text-gray-900 uppercase tracking-widest">Rated {order.rating}.0</span>
+                          <span className="text-[10px] font-black text-gray-900 dark:text-white uppercase tracking-widest">Rated {order.rating}.0</span>
                         </div>
-                        <button className="p-2 hover:bg-white rounded-full transition-colors text-gray-400 hover:text-gray-600">
+                        <button className="p-2 hover:bg-white dark:hover:bg-gray-800 rounded-full transition-colors text-gray-400 hover:text-gray-600 dark:hover:text-white">
                           <ChevronRight className="w-5 h-5" />
                         </button>
                       </div>
@@ -380,7 +382,7 @@ const DeliveriesPage = () => {
                   ))}
                 </div>
 
-                <button className="w-full mt-8 py-4 border border-dashed border-gray-200 rounded-2xl text-[10px] font-black text-gray-400 uppercase tracking-widest hover:border-orange-200 hover:text-orange-500 hover:bg-orange-50/50 transition-all">
+                <button className="w-full mt-8 py-4 border border-dashed border-gray-200 dark:border-gray-800 rounded-2xl text-[10px] font-black text-gray-400 uppercase tracking-widest hover:border-orange-200 dark:hover:border-orange-500/50 hover:text-orange-500 hover:bg-orange-50/50 dark:hover:bg-orange-500/10 transition-all">
                   Load More Orders
                 </button>
               </div>
@@ -389,30 +391,30 @@ const DeliveriesPage = () => {
             {/* Right Column: Info Cards */}
             <div className="space-y-8">
               {/* Delivery Address Card */}
-              <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-xl shadow-orange-500/5 relative overflow-hidden group">
+              <div className="bg-white dark:bg-gray-900 rounded-3xl p-8 border border-gray-100 dark:border-gray-800 shadow-xl shadow-orange-500/5 dark:shadow-none relative overflow-hidden group transition-colors">
                 <div className="absolute top-0 left-0 w-1 h-full bg-orange-500"></div>
                 <div className="flex justify-between items-start mb-6">
                   <div>
-                    <h3 className="text-[11px] font-black text-gray-900 uppercase tracking-[0.2em] mb-4">Delivery Address</h3>
+                    <h3 className="text-[11px] font-black text-gray-900 dark:text-white uppercase tracking-[0.2em] mb-4">Delivery Address</h3>
                     <div className="flex items-start gap-3">
-                      <div className="p-2 bg-orange-50 rounded-lg shrink-0">
+                      <div className="p-2 bg-orange-50 dark:bg-orange-500/10 rounded-lg shrink-0">
                         <MapPin className="w-4 h-4 text-orange-500" />
                       </div>
                       <div>
-                        <p className="text-sm font-black text-gray-900">{currentAddress.label}</p>
-                        <p className="text-xs font-medium text-gray-500 leading-relaxed mt-1">
+                        <p className="text-sm font-black text-gray-900 dark:text-white">{currentAddress.label}</p>
+                        <p className="text-xs font-medium text-gray-500 dark:text-gray-400 leading-relaxed mt-1">
                           {currentAddress.address}
                         </p>
                       </div>
                     </div>
                   </div>
-                  <button className="text-gray-400 hover:text-gray-600">
+                  <button className="text-gray-400 hover:text-gray-600 dark:hover:text-white">
                     <MoreVertical className="w-4 h-4" />
                   </button>
                 </div>
                 <button 
                   onClick={() => setIsAddressModalOpen(true)}
-                  className="w-full py-3 bg-gray-900 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-gray-800 transition-all"
+                  className="w-full py-3 bg-gray-900 dark:bg-white dark:text-gray-900 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-gray-800 dark:hover:bg-gray-100 transition-all"
                 >
                   Change Address
                 </button>
@@ -426,14 +428,14 @@ const DeliveriesPage = () => {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <Clock className="w-4 h-4 text-orange-500" />
-                      <span className="text-xs font-bold text-gray-300">Preferred Time</span>
+                      <span className="text-xs font-bold text-gray-300 dark:text-gray-400 transition-colors">Preferred Time</span>
                     </div>
                     <span className="text-xs font-black text-white">1:00 PM</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <Package className="w-4 h-4 text-orange-500" />
-                      <span className="text-xs font-bold text-gray-300">Drop-off Mode</span>
+                      <span className="text-xs font-bold text-gray-300 dark:text-gray-400 transition-colors">Drop-off Mode</span>
                     </div>
                     <span className="text-xs font-black text-white">At Door</span>
                   </div>
@@ -451,7 +453,7 @@ const DeliveriesPage = () => {
                 <p className="text-sm opacity-90 leading-relaxed mb-6 font-medium">
                   Our delivery support team is available 24/7 for any issues.
                 </p>
-                <Link to="/support" className="inline-block bg-white text-orange-600 font-black text-[10px] uppercase tracking-widest py-3 px-8 rounded-xl hover:bg-orange-50 transition-all">
+                <Link to="/support" className="inline-block bg-white dark:bg-gray-950 text-orange-600 dark:text-orange-500 font-black text-[10px] uppercase tracking-widest py-3 px-8 rounded-xl hover:bg-orange-50 dark:hover:bg-gray-900 transition-all">
                   Contact Support
                 </Link>
               </div>
@@ -459,15 +461,15 @@ const DeliveriesPage = () => {
           </div>
 
           {/* Footer */}
-          <footer className="mt-32 pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8 text-gray-400 text-[10px] font-bold pb-20">
+          <footer className="mt-32 pt-12 border-t border-gray-100 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-8 text-gray-400 text-[10px] font-bold pb-20 transition-colors">
             <div className="flex items-center gap-10">
-              <span className="text-gray-900 text-sm font-black tracking-tight">swadSetu<span className="text-orange-500">.</span></span>
-              <span className="font-medium">© 2024 SwadSetu. Built for honesty and clarity.</span>
+              <span className="text-gray-900 dark:text-white text-sm font-black tracking-tight">swadSetu<span className="text-orange-500">.</span></span>
+              <span className="font-medium text-gray-400 dark:text-gray-500">© 2024 SwadSetu. Built for honesty and clarity.</span>
             </div>
             <div className="flex gap-8 uppercase tracking-widest">
-              <Link to="/support" className="hover:text-orange-500 transition-colors">Help Center</Link>
-              <Link to="/privacy" className="hover:text-orange-500 transition-colors">Privacy Policy</Link>
-              <Link to="/contact" className="hover:text-orange-500 transition-colors">Contact Us</Link>
+              <Link to="/support" className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">Help Center</Link>
+              <Link to="/privacy" className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">Privacy Policy</Link>
+              <Link to="/contact" className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">Contact Us</Link>
             </div>
           </footer>
         </main>
@@ -476,17 +478,17 @@ const DeliveriesPage = () => {
       {/* Address Modal */}
       {isAddressModalOpen && (
         <div className="fixed inset-0 bg-black/60 z-[100] flex items-center justify-center p-4 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-white rounded-3xl w-full max-w-md p-8 shadow-2xl animate-in zoom-in duration-300 max-h-[90vh] overflow-y-auto">
+          <div className="bg-white dark:bg-gray-900 rounded-3xl w-full max-w-md p-8 shadow-2xl animate-in zoom-in duration-300 max-h-[90vh] overflow-y-auto border border-gray-100 dark:border-gray-800 transition-colors">
             {!isAddingNewAddress ? (
               <>
                 <div className="flex justify-between items-center mb-8">
                   <div>
-                    <h2 className="text-xl font-black text-gray-900 uppercase tracking-tight">Select Address</h2>
-                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-1">Where should we deliver?</p>
+                    <h2 className="text-xl font-black text-gray-900 dark:text-white uppercase tracking-tight">Select Address</h2>
+                    <p className="text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest mt-1">Where should we deliver?</p>
                   </div>
                   <button 
                     onClick={() => setIsAddressModalOpen(false)}
-                    className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-all"
+                    className="w-10 h-10 rounded-full bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-600 dark:hover:text-white transition-all"
                   >
                     <X className="w-5 h-5" />
                   </button>
@@ -499,24 +501,24 @@ const DeliveriesPage = () => {
                       onClick={() => dispatch(setCurrentAddress(addr))}
                       className={`p-5 rounded-2xl border-2 transition-all cursor-pointer group ${
                         currentAddress.id === addr.id 
-                        ? 'border-orange-500 bg-orange-50' 
-                        : 'border-gray-50 hover:border-gray-200 bg-white'
+                        ? 'border-orange-500 bg-orange-50 dark:bg-orange-500/5' 
+                        : 'border-gray-50 dark:border-gray-800 hover:border-gray-200 dark:hover:border-gray-700 bg-white dark:bg-gray-800'
                       }`}
                     >
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center gap-3">
-                          <div className={`p-2 rounded-lg ${currentAddress.id === addr.id ? 'bg-orange-500 text-white' : 'bg-gray-50 text-gray-400'}`}>
+                          <div className={`p-2 rounded-lg ${currentAddress.id === addr.id ? 'bg-orange-500 text-white' : 'bg-gray-50 dark:bg-gray-900 text-gray-400'}`}>
                             <MapPin className="w-4 h-4" />
                           </div>
-                          <span className={`text-sm font-black ${currentAddress.id === addr.id ? 'text-gray-900' : 'text-gray-500'}`}>{addr.label}</span>
+                          <span className={`text-sm font-black ${currentAddress.id === addr.id ? 'text-gray-900 dark:text-white' : 'text-gray-500'}`}>{addr.label}</span>
                         </div>
                         <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${
-                          currentAddress.id === addr.id ? 'border-orange-500 bg-orange-500' : 'border-gray-200'
+                          currentAddress.id === addr.id ? 'border-orange-500 bg-orange-500' : 'border-gray-200 dark:border-gray-700'
                         }`}>
                           {currentAddress.id === addr.id && <div className="w-2 h-2 bg-white rounded-full"></div>}
                         </div>
                       </div>
-                      <p className={`text-[10px] font-medium leading-relaxed ${currentAddress.id === addr.id ? 'text-gray-600' : 'text-gray-400'}`}>
+                      <p className={`text-[10px] font-medium leading-relaxed ${currentAddress.id === addr.id ? 'text-gray-600 dark:text-gray-300' : 'text-gray-400 dark:text-gray-500'}`}>
                         {addr.address}
                       </p>
                     </div>
@@ -524,7 +526,7 @@ const DeliveriesPage = () => {
                   
                   <button 
                     onClick={() => setIsAddingNewAddress(true)}
-                    className="w-full p-5 rounded-2xl border-2 border-dashed border-gray-100 text-gray-400 text-[10px] font-black uppercase tracking-widest hover:border-orange-200 hover:text-orange-500 hover:bg-orange-50 transition-all flex items-center justify-center gap-2"
+                    className="w-full p-5 rounded-2xl border-2 border-dashed border-gray-100 dark:border-gray-800 text-gray-400 text-[10px] font-black uppercase tracking-widest hover:border-orange-200 dark:hover:border-orange-500/30 hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-500/10 transition-all flex items-center justify-center gap-2"
                   >
                     + Add New Address
                   </button>
@@ -532,7 +534,7 @@ const DeliveriesPage = () => {
 
                 <button 
                   onClick={() => setIsAddressModalOpen(false)}
-                  className="w-full py-4 bg-gray-900 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-gray-800 transition-all shadow-xl shadow-gray-200"
+                  className="w-full py-4 bg-gray-900 dark:bg-white dark:text-gray-900 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-gray-800 dark:hover:bg-gray-100 transition-all shadow-xl shadow-gray-200 dark:shadow-none"
                 >
                   Confirm Selection
                 </button>
@@ -543,13 +545,13 @@ const DeliveriesPage = () => {
                   <div className="flex items-center gap-4">
                     <button 
                       onClick={() => setIsAddingNewAddress(false)}
-                      className="p-2 rounded-xl bg-gray-50 text-gray-400 hover:bg-gray-100 transition-all"
+                      className="p-2 rounded-xl bg-gray-50 dark:bg-gray-800 text-gray-400 dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all"
                     >
                       <ArrowLeft className="w-5 h-5" />
                     </button>
                     <div>
-                      <h2 className="text-xl font-black text-gray-900 uppercase tracking-tight">Add New</h2>
-                      <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-1">Manual or Map pick</p>
+                      <h2 className="text-xl font-black text-gray-900 dark:text-white uppercase tracking-tight">Add New</h2>
+                      <p className="text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest mt-1">Manual or Map pick</p>
                     </div>
                   </div>
                   <button 
@@ -557,7 +559,7 @@ const DeliveriesPage = () => {
                       setIsAddingNewAddress(false);
                       setIsAddressModalOpen(false);
                     }}
-                    className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-all"
+                    className="w-10 h-10 rounded-full bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-600 dark:hover:text-white transition-all"
                   >
                     <X className="w-5 h-5" />
                   </button>
@@ -598,7 +600,7 @@ const DeliveriesPage = () => {
                         value={newAddress.address}
                         onChange={handleAddressChange}
                         placeholder="Enter full address manually or pick from map..."
-                        className="w-full p-4 bg-gray-50 border-2 border-gray-50 rounded-2xl text-sm focus:border-orange-500 outline-none transition-all resize-none h-32"
+                        className="w-full p-4 bg-gray-50 dark:bg-gray-800 border-2 border-gray-50 dark:border-gray-800 rounded-2xl text-sm focus:border-orange-500 outline-none transition-all resize-none h-32 dark:text-white"
                       />
                       {isGeocoding && (
                         <div className="absolute inset-0 bg-white/50 backdrop-blur-[2px] flex items-center justify-center rounded-2xl">
@@ -664,9 +666,9 @@ const DeliveriesPage = () => {
       {/* Map Modal */}
       {isMapOpen && (
         <div className="fixed inset-0 bg-black/80 z-[100] flex items-center justify-center p-0 md:p-10 backdrop-blur-md animate-in fade-in duration-300">
-          <div className="bg-white w-full h-full md:rounded-3xl shadow-2xl relative overflow-hidden flex flex-col">
+          <div className="bg-white dark:bg-gray-900 w-full h-full md:rounded-3xl shadow-2xl relative overflow-hidden flex flex-col transition-colors">
             {/* Map Header */}
-            <div className="bg-[#121212] text-white px-8 py-6 flex justify-between items-center relative z-10 shadow-lg">
+            <div className="bg-[#121212] dark:bg-[#000000] text-white px-8 py-6 flex justify-between items-center relative z-10 shadow-lg transition-colors">
               <div className="flex items-center gap-6">
                 <button 
                   onClick={() => setIsMapOpen(false)}
@@ -734,18 +736,18 @@ const DeliveriesPage = () => {
               <div className="absolute bottom-8 right-8 z-[400] flex flex-col gap-4">
                 <button 
                   onClick={() => setDeliveryPos([12.9516, 77.5746])}
-                  className="bg-white w-12 h-12 rounded-2xl shadow-xl flex items-center justify-center text-gray-900 hover:bg-orange-500 hover:text-white transition-all group"
+                  className="bg-white dark:bg-gray-800 w-12 h-12 rounded-2xl shadow-xl flex items-center justify-center text-gray-900 dark:text-white hover:bg-orange-500 hover:text-white transition-all group"
                 >
                   <LocateFixed className="w-6 h-6 group-hover:rotate-45 transition-transform" />
                 </button>
-                <button className="bg-white w-12 h-12 rounded-2xl shadow-xl flex items-center justify-center text-gray-900 hover:bg-orange-500 hover:text-white transition-all">
+                <button className="bg-white dark:bg-gray-800 w-12 h-12 rounded-2xl shadow-xl flex items-center justify-center text-gray-900 dark:text-white hover:bg-orange-500 hover:text-white transition-all">
                   <Maximize2 className="w-6 h-6" />
                 </button>
               </div>
 
               {/* Delivery Partner Overlay */}
-              <div className="absolute bottom-8 left-8 z-[400] bg-white rounded-3xl p-6 shadow-2xl border border-gray-100 flex items-center gap-6 max-w-sm">
-                <div className="w-16 h-16 bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 shrink-0">
+              <div className="absolute bottom-8 left-8 z-[400] bg-white dark:bg-gray-900 rounded-3xl p-6 shadow-2xl dark:shadow-none border border-gray-100 dark:border-gray-800 flex items-center gap-6 max-w-sm transition-colors">
+                <div className="w-16 h-16 bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-700 shrink-0">
                   <img 
                     src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&q=80&w=150" 
                     alt="Rohan" 
@@ -754,13 +756,13 @@ const DeliveriesPage = () => {
                 </div>
                 <div>
                   <div className="flex items-center gap-2 mb-1">
-                    <h4 className="font-black text-gray-900">Rohan Sharma</h4>
-                    <span className="bg-orange-100 text-orange-600 text-[8px] font-black px-2 py-0.5 rounded-full uppercase tracking-widest">Pro</span>
+                    <h4 className="font-black text-gray-900 dark:text-white">Rohan Sharma</h4>
+                    <span className="bg-orange-100 dark:bg-orange-500/20 text-orange-600 dark:text-orange-400 text-[8px] font-black px-2 py-0.5 rounded-full uppercase tracking-widest">Pro</span>
                   </div>
-                  <p className="text-xs font-bold text-gray-400 mb-3 uppercase tracking-tight">On a White Scooter • KA 01 JS 2931</p>
+                  <p className="text-xs font-bold text-gray-400 dark:text-gray-500 mb-3 uppercase tracking-tight transition-colors">On a White Scooter • KA 01 JS 2931</p>
                   <div className="flex gap-2">
-                    <button className="flex-1 bg-gray-900 text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-gray-800 transition-all">Call</button>
-                    <button className="flex-1 bg-gray-50 text-gray-500 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-gray-100 transition-all">Message</button>
+                    <button className="flex-1 bg-gray-900 dark:bg-white dark:text-gray-900 text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-gray-800 dark:hover:bg-gray-100 transition-all">Call</button>
+                    <button className="flex-1 bg-gray-50 dark:bg-gray-800 text-gray-500 dark:text-gray-400 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-gray-100 dark:hover:bg-gray-700 transition-all">Message</button>
                   </div>
                 </div>
               </div>

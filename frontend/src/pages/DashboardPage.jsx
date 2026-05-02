@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
+import ThemeToggle from '../components/ThemeToggle';
 import { 
   Bell, 
   User, 
@@ -64,15 +65,15 @@ const DashboardPage = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-[#f8f9fa] text-gray-800 font-sans">
+    <div className="flex min-h-screen bg-[#f8f9fa] dark:bg-[#0f0f0f] text-gray-800 dark:text-gray-200 font-sans transition-colors duration-300">
       <Sidebar />
 
       <div className="flex-1 flex flex-col">
         {/* Header */}
-        <header className="bg-[#121212] px-8 py-4 flex justify-between items-center sticky top-0 z-40 shadow-xl">
+        <header className="bg-white dark:bg-[#000000] px-8 py-4 flex justify-between items-center sticky top-0 z-40 shadow-sm dark:shadow-xl border-b border-gray-100 dark:border-white/5 transition-colors duration-300">
           <div className="flex items-center gap-3">
             <div className="w-2.5 h-2.5 bg-orange-500 rounded-full animate-pulse"></div>
-            <span className="text-xl font-bold text-white tracking-tight">swadSetu</span>
+            <span className="text-xl font-bold text-gray-900 dark:text-white tracking-tight transition-colors">swadSetu</span>
           </div>
           <div className="flex items-center gap-6">
             <div className="group relative">
@@ -80,16 +81,19 @@ const DashboardPage = () => {
                 <Star className="w-3 h-3 fill-orange-400" />
                 Standard Plan
               </div>
-              <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-lg shadow-xl p-3 border border-gray-100 opacity-0 group-hover:opacity-100 transition-all pointer-events-none z-50">
-                <p className="text-[10px] text-gray-500 font-bold uppercase mb-1">Your Benefits</p>
-                <ul className="text-xs text-gray-700 space-y-1 font-medium">
+              <div className="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-xl p-3 border border-gray-100 dark:border-gray-700 opacity-0 group-hover:opacity-100 transition-all pointer-events-none z-50">
+                <p className="text-[10px] text-gray-500 dark:text-gray-400 font-bold uppercase mb-1">Your Benefits</p>
+                <ul className="text-xs text-gray-700 dark:text-gray-300 space-y-1 font-medium">
                   <li>• Daily artisan meals</li>
                   <li>• 3 free swaps/month</li>
                   <li>• Priority support</li>
                 </ul>
               </div>
             </div>
-            <Link to="/profile" className="w-9 h-9 bg-gradient-to-tr from-orange-500 to-orange-400 rounded-full flex items-center justify-center text-white cursor-pointer overflow-hidden ring-2 ring-gray-800 hover:ring-orange-500/50 transition-all">
+            
+            <ThemeToggle />
+
+            <Link to="/profile" className="w-9 h-9 bg-gradient-to-tr from-orange-500 to-orange-400 rounded-full flex items-center justify-center text-white cursor-pointer overflow-hidden ring-2 ring-gray-800 dark:ring-gray-700 hover:ring-orange-500/50 transition-all">
               <User className="w-5 h-5" />
             </Link>
           </div>
@@ -100,12 +104,12 @@ const DashboardPage = () => {
           {/* Greeting & Quick Actions */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
             <div>
-              <h1 className="text-4xl font-black text-gray-900 mb-2 tracking-tight">
+              <h1 className="text-4xl font-black text-gray-900 dark:text-white mb-2 tracking-tight transition-colors">
                 {getGreeting()}, Arjun
               </h1>
-              <p className="text-gray-500 font-medium flex items-center gap-2">
+              <p className="text-gray-500 dark:text-gray-400 font-medium flex items-center gap-2 transition-colors">
                 <Clock className="w-4 h-4 text-orange-500" />
-                Next delivery: <span className="text-gray-900 font-bold">{isSkipped ? 'Tomorrow' : `${deliveryTime} Today`}</span> from Annapurna Kitchen
+                Next delivery: <span className="text-gray-900 dark:text-gray-100 font-bold">{isSkipped ? 'Tomorrow' : `${deliveryTime} Today`}</span> from Annapurna Kitchen
               </p>
             </div>
             <div className="flex gap-3">
@@ -133,39 +137,39 @@ const DashboardPage = () => {
             <div className="lg:col-span-2 space-y-10">
               {/* Stats Cards */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100/50 group hover:shadow-md transition-all">
+                <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-gray-100/50 dark:border-gray-800 group hover:shadow-md transition-all">
                   <div className="flex justify-between items-start mb-4">
                     <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Loyalty</h3>
                     <TrendingUp className="w-4 h-4 text-green-500" />
                   </div>
-                  <p className="text-2xl font-black text-gray-900">12 Days Active</p>
+                  <p className="text-2xl font-black text-gray-900 dark:text-white">12 Days Active</p>
                   <p className="text-[10px] text-green-600 font-bold mt-2">+2 days from last week</p>
                 </div>
-                <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100/50 group hover:shadow-md transition-all">
+                <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-gray-100/50 dark:border-gray-800 group hover:shadow-md transition-all">
                   <div className="flex justify-between items-start mb-4">
                     <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Flexibility</h3>
                     <div className="flex gap-1">
                       {[...Array(Math.max(0, swapsLeft))].map((_, i) => <Heart key={i} className="w-4 h-4 text-red-500 fill-red-500" />)}
-                      {[...Array(Math.max(0, 3 - swapsLeft))].map((_, i) => <Heart key={`empty-${i}`} className="w-4 h-4 text-gray-200" />)}
+                      {[...Array(Math.max(0, 3 - swapsLeft))].map((_, i) => <Heart key={`empty-${i}`} className="w-4 h-4 text-gray-200 dark:text-gray-700" />)}
                     </div>
                   </div>
-                  <p className="text-2xl font-black text-gray-900">{swapsLeft} Swaps Left</p>
-                  <p className="text-[10px] text-gray-500 font-bold mt-2">Resets in 4 days</p>
+                  <p className="text-2xl font-black text-gray-900 dark:text-white">{swapsLeft} Swaps Left</p>
+                  <p className="text-[10px] text-gray-500 dark:text-gray-400 font-bold mt-2">Resets in 4 days</p>
                 </div>
-                <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100/50 group hover:shadow-md transition-all">
+                <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-gray-100/50 dark:border-gray-800 group hover:shadow-md transition-all">
                   <div className="flex justify-between items-start mb-4">
                     <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Feedback</h3>
                     <div className="flex gap-0.5">
                       {[1,2,3,4].map(i => <Star key={i} className="w-3 h-3 text-orange-500 fill-orange-500" />)}
                     </div>
                   </div>
-                  <p className="text-2xl font-black text-gray-900">4.8 Avg Rating</p>
-                  <p className="text-[10px] text-gray-500 font-bold mt-2">Top 5% of diners</p>
+                  <p className="text-2xl font-black text-gray-900 dark:text-white">4.8 Avg Rating</p>
+                  <p className="text-[10px] text-gray-500 dark:text-gray-400 font-bold mt-2">Top 5% of diners</p>
                 </div>
               </div>
 
               {/* Featured Card */}
-              <div className="bg-white rounded-3xl shadow-xl shadow-gray-200/50 overflow-hidden group border border-gray-100">
+              <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-xl shadow-gray-200/50 dark:shadow-none overflow-hidden group border border-gray-100 dark:border-gray-800">
                 <div className="flex flex-col md:flex-row">
                   <div className="md:w-5/12 relative overflow-hidden h-[250px] md:h-auto">
                     <img 
@@ -182,7 +186,7 @@ const DashboardPage = () => {
                       <span className="w-8 h-px bg-orange-500"></span>
                       <span className="text-[10px] font-black text-orange-500 uppercase tracking-[0.2em]">Chef's Special</span>
                     </div>
-                    <h2 className="text-3xl font-black text-gray-900 mb-4 leading-tight">Today's Special Thali</h2>
+                    <h2 className="text-3xl font-black text-gray-900 dark:text-white mb-4 leading-tight">Today's Special Thali</h2>
                     <p className="text-gray-500 leading-relaxed mb-8 font-medium">
                       Slow-cooked yellow dal tadka, jeera rice, aloo gobhi matar, and two handmade whole wheat rotis.
                     </p>
@@ -223,9 +227,9 @@ const DashboardPage = () => {
                   </button>
                 </div>
 
-                <div className="bg-[#121212] rounded-3xl p-10 text-white shadow-2xl relative overflow-hidden">
+                <div className="bg-white dark:bg-[#121212] rounded-3xl p-10 text-gray-900 dark:text-white shadow-xl dark:shadow-2xl border border-gray-100 dark:border-none relative overflow-hidden transition-all duration-300">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 rounded-full blur-3xl"></div>
-                  <h3 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-10">Recent Activity</h3>
+                  <h3 className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] mb-10">Recent Activity</h3>
                   <div className="space-y-8">
                     <div className="flex gap-5">
                       <div className="w-10 h-10 bg-orange-500/10 rounded-xl flex items-center justify-center shrink-0">
@@ -236,11 +240,11 @@ const DashboardPage = () => {
                         <p className="text-gray-500 text-xs leading-relaxed font-medium">Thank you for rating the Paneer Lababdar.</p>
                       </div>
                     </div>
-                    <div className="pt-8 border-t border-gray-800 flex justify-between items-center">
+                    <div className="pt-8 border-t border-gray-100 dark:border-gray-800 flex justify-between items-center">
                       <Link to="/orders" className="text-orange-500 text-[10px] font-black uppercase tracking-widest flex items-center gap-2 hover:translate-x-1 transition-all">
                         View Full History <ArrowRight className="w-3 h-3" />
                       </Link>
-                      <span className="text-[10px] text-gray-600 font-bold uppercase">4 days ago</span>
+                      <span className="text-[10px] text-gray-400 dark:text-gray-600 font-bold uppercase">4 days ago</span>
                     </div>
                   </div>
                 </div>
@@ -249,35 +253,35 @@ const DashboardPage = () => {
 
             {/* Right Column: Upcoming & Discovery */}
             <div className="space-y-8">
-              <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-xl shadow-orange-500/5 relative group/card overflow-hidden">
+              <div className="bg-white dark:bg-gray-900 rounded-3xl p-8 border border-gray-100 dark:border-gray-800 shadow-xl shadow-orange-500/5 relative group/card overflow-hidden">
                 {/* Accent Line */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-400 to-orange-600 opacity-80"></div>
                 
                 <div className="flex items-center justify-between mb-8 relative z-10">
-                  <h3 className="text-[11px] font-black text-gray-900 uppercase tracking-[0.2em]">Upcoming Schedule</h3>
+                  <h3 className="text-[11px] font-black text-gray-900 dark:text-white uppercase tracking-[0.2em]">Upcoming Schedule</h3>
                   <button className="text-[10px] font-black text-orange-500 uppercase tracking-widest hover:text-orange-600 transition-colors">View All</button>
                 </div>
                 
                 <div className="space-y-0 relative">
                   {/* Timeline Line */}
-                  <div className="absolute left-6 top-2 bottom-2 w-px bg-gray-100"></div>
+                  <div className="absolute left-6 top-2 bottom-2 w-px bg-gray-100 dark:bg-gray-800"></div>
                   
                   {upcomingMeals.map((meal, idx) => (
                     <div key={idx} className="relative pl-12 pb-8 last:pb-0 group/item">
                       {/* Timeline Dot */}
-                      <div className="absolute left-[21px] top-1.5 w-2.5 h-2.5 rounded-full bg-white border-2 border-gray-200 z-10 group-hover/item:border-orange-500 group-hover/item:scale-125 transition-all duration-300"></div>
+                      <div className="absolute left-[21px] top-1.5 w-2.5 h-2.5 rounded-full bg-white dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 z-10 group-hover/item:border-orange-500 group-hover/item:scale-125 transition-all duration-300"></div>
                       
                       <div className="flex flex-col gap-1">
                         <div className="flex items-center justify-between">
                           <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">{meal.day} • {meal.time}</span>
                           <button 
                             onClick={() => handleSwapClick(idx)}
-                            className="bg-emerald-50 text-emerald-600 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center gap-2 hover:bg-emerald-600 hover:text-white hover:shadow-lg hover:shadow-emerald-200 transition-all transform hover:-translate-y-0.5 active:scale-95 group/swap"
+                            className="bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center gap-2 hover:bg-emerald-600 dark:hover:bg-emerald-600 hover:text-white transition-all transform hover:-translate-y-0.5 active:scale-95 group/swap"
                           >
                             Swap Meal <RefreshCw className="w-3 h-3 group-hover/swap:rotate-180 transition-transform duration-500" />
                           </button>
                         </div>
-                        <h4 className="text-sm font-black text-gray-900 group-hover/item:text-orange-600 transition-colors">{meal.menu}</h4>
+                        <h4 className="text-sm font-black text-gray-900 dark:text-white group-hover/item:text-orange-600 transition-colors">{meal.menu}</h4>
                         <div className="flex items-center gap-2 mt-1">
                           <span className="w-1 h-1 rounded-full bg-gray-300"></span>
                           <span className="text-[10px] font-bold text-gray-500 uppercase tracking-tighter">{meal.type}</span>
@@ -295,8 +299,8 @@ const DashboardPage = () => {
           <div className="mt-20">
             <div className="flex justify-between items-end mb-10">
               <div>
-                <h3 className="text-2xl font-black text-gray-900 mb-1 tracking-tight">Discover Kitchen Artisans</h3>
-                <p className="text-gray-500 text-sm font-medium">Top-rated kitchens curated just for you this week.</p>
+                <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-1 tracking-tight transition-colors">Discover Kitchen Artisans</h3>
+                <p className="text-gray-500 dark:text-gray-400 text-sm font-medium transition-colors">Top-rated kitchens curated just for you this week.</p>
               </div>
               <Link to="/kitchens" className="text-orange-500 text-xs font-black uppercase tracking-widest border-b-2 border-orange-500/20 pb-1 hover:border-orange-500 transition-all">
                 View Map
@@ -309,14 +313,14 @@ const DashboardPage = () => {
                 { name: 'Satvic Delights', rating: '4.8', dishes: '12' },
                 { name: 'Konkan Coast', rating: '4.9', dishes: '31' }
               ].map((kitchen, i) => (
-                <div key={i} className="bg-white p-6 rounded-2xl border border-gray-100 hover:shadow-xl hover:shadow-gray-100 transition-all cursor-pointer">
-                  <div className="w-8 h-8 bg-gray-50 rounded-lg mb-4 flex items-center justify-center text-gray-400">
+                <div key={i} className="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-100 dark:border-gray-800 hover:shadow-xl hover:shadow-gray-100 dark:hover:shadow-none transition-all cursor-pointer">
+                  <div className="w-8 h-8 bg-gray-50 dark:bg-gray-800 rounded-lg mb-4 flex items-center justify-center text-gray-400">
                     <User className="w-4 h-4" />
                   </div>
-                  <h5 className="font-black text-sm mb-1">{kitchen.name}</h5>
+                  <h5 className="font-black text-sm mb-1 text-gray-900 dark:text-white">{kitchen.name}</h5>
                   <div className="flex items-center gap-3 text-[10px] font-bold text-gray-400">
                     <span className="flex items-center gap-1 text-orange-500"><Star className="w-3 h-3 fill-orange-500" /> {kitchen.rating}</span>
-                    <span>{kitchen.dishes} Dishes</span>
+                    <span className="dark:text-gray-500">{kitchen.dishes} Dishes</span>
                   </div>
                 </div>
               ))}
@@ -324,10 +328,10 @@ const DashboardPage = () => {
           </div>
 
           {/* Improved Footer */}
-          <footer className="mt-32 pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8 text-gray-400 text-[10px] font-bold pb-20">
+          <footer className="mt-32 pt-12 border-t border-gray-100 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-8 text-gray-400 text-[10px] font-bold pb-20">
             <div className="flex items-center gap-10">
-              <span className="text-gray-900 text-sm font-black tracking-tight">swadSetu<span className="text-orange-500">.</span></span>
-              <span className="font-medium">© 2024 SwadSetu. Built for honesty and clarity.</span>
+              <span className="text-gray-900 dark:text-white text-sm font-black tracking-tight">swadSetu<span className="text-orange-500">.</span></span>
+              <span className="font-medium text-gray-400 dark:text-gray-500">© 2024 SwadSetu. Built for honesty and clarity.</span>
             </div>
             <div className="flex gap-8 uppercase tracking-widest">
               <Link to="/support" className="hover:text-orange-500 transition-colors">Help Center</Link>

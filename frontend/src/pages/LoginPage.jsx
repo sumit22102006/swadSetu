@@ -5,6 +5,7 @@ import { setCredentials } from '../store/slices/authSlice';
 import { setLoading } from '../store/slices/uiSlice';
 import api from '../services/api';
 import signupBg from '../assets/signup-bg.png';
+import ThemeToggle from '../components/ThemeToggle';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -41,7 +42,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex min-h-screen w-full bg-[#fffaf7] font-sans">
+    <div className="flex min-h-screen w-full bg-[#fffaf7] dark:bg-gray-950 font-sans transition-colors duration-300">
       {/* Left Side - Image */}
       <div 
         className="hidden md:flex flex-[1.2] bg-cover bg-center relative"
@@ -58,10 +59,13 @@ const LoginPage = () => {
       </div>
 
       {/* Right Side - Form */}
-      <div className="flex-1 flex items-center justify-center p-6 md:p-15">
+      <div className="flex-1 flex items-center justify-center p-6 md:p-15 relative">
+        <div className="absolute top-8 right-8">
+          <ThemeToggle />
+        </div>
         <div className="w-full max-w-[400px]">
-          <h1 className="text-3xl font-bold mb-2 text-secondary">Welcome back</h1>
-          <p className="text-sm text-text-light mb-10">Log in to continue your culinary journey.</p>
+          <h1 className="text-3xl font-bold mb-2 text-secondary dark:text-white">Welcome back</h1>
+          <p className="text-sm text-text-light dark:text-gray-400 mb-10">Log in to continue your culinary journey.</p>
           
           {error && (
             <div className="bg-red-50 text-red-500 p-3 rounded-sm text-sm mb-6 border border-red-200">
@@ -115,7 +119,7 @@ const LoginPage = () => {
             <div className="flex-1 border-b border-gray-100"></div>
           </div>
           
-          <button className="w-full p-3 bg-white border border-gray-200 rounded-sm flex items-center justify-center gap-3 text-sm font-medium hover:bg-gray-50 transition-colors cursor-pointer">
+          <button className="w-full p-3 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-sm flex items-center justify-center gap-3 text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors cursor-pointer dark:text-white">
             <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" className="w-4.5 h-4.5" />
             Continue with Google
           </button>

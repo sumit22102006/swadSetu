@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { MapPin, ChevronLeft, ChevronRight, CalendarX, Plus } from 'lucide-react';
 import Sidebar from '../components/Sidebar';
 import { User, Star } from 'lucide-react';
+import ThemeToggle from '../components/ThemeToggle';
 
 const MealPlanPage = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -110,7 +111,7 @@ const MealPlanPage = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-[#f8f9fa] text-gray-800 font-sans">
+    <div className="flex min-h-screen bg-[#f8f9fa] dark:bg-gray-950 text-gray-800 dark:text-gray-200 font-sans transition-colors duration-300">
       <Sidebar />
       <div className="flex-1 flex flex-col relative">
         
@@ -121,7 +122,7 @@ const MealPlanPage = () => {
           </div>
         )}
         {/* Header from Dashboard for consistency */}
-        <header className="bg-[#121212] px-8 py-4 flex justify-between items-center sticky top-0 z-40 shadow-xl">
+        <header className="bg-[#121212] dark:bg-[#000000] px-8 py-4 flex justify-between items-center sticky top-0 z-40 shadow-xl transition-colors">
           <div className="flex items-center gap-3">
             <div className="w-2.5 h-2.5 bg-orange-500 rounded-full animate-pulse"></div>
             <span className="text-xl font-bold text-white tracking-tight">swadSetu</span>
@@ -131,6 +132,7 @@ const MealPlanPage = () => {
               <Star className="w-3 h-3 fill-orange-400" />
               Standard Plan
             </div>
+            <ThemeToggle />
             <Link to="/profile" className="w-9 h-9 bg-gradient-to-tr from-orange-500 to-orange-400 rounded-full flex items-center justify-center text-white cursor-pointer overflow-hidden ring-2 ring-gray-800 hover:ring-orange-500/50 transition-all">
               <User className="w-5 h-5" />
             </Link>
@@ -138,7 +140,7 @@ const MealPlanPage = () => {
         </header>
 
         <main className="p-8 lg:p-12 w-full mx-auto">
-          <div className="bg-white w-full rounded-3xl shadow-sm border border-gray-100 p-8 md:p-12 text-gray-900">
+          <div className="bg-white dark:bg-gray-900 w-full rounded-3xl shadow-sm border border-gray-100 dark:border-gray-800 p-8 md:p-12 text-gray-900 dark:text-white transition-colors">
 
         {/* Header Section */}
         <div className="flex flex-col md:flex-row justify-between items-start mb-10">
@@ -149,7 +151,7 @@ const MealPlanPage = () => {
                 {currentMonth}
               </span>
             </div>
-            <div className="flex items-center gap-1.5 text-gray-500 text-sm">
+            <div className="flex items-center gap-1.5 text-gray-500 dark:text-gray-400 text-sm">
               <MapPin className="w-4 h-4" />
               <span>Mom's Kitchen - Sector 5</span>
             </div>
@@ -166,7 +168,7 @@ const MealPlanPage = () => {
             </div>
             <div className="flex flex-col items-center transition-all">
               <span className="text-2xl font-bold text-[#d93838]">{currentStats.skipped}</span>
-              <span className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Skipped</span>
+              <span className="text-[10px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider">Skipped</span>
             </div>
           </div>
         </div>
@@ -174,13 +176,13 @@ const MealPlanPage = () => {
         {/* Controls Section */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
           <div className="flex items-center">
-            <button onClick={handlePrevWeek} className="border border-gray-200 p-2 hover:bg-gray-50 transition-colors">
+            <button onClick={handlePrevWeek} className="border border-gray-200 dark:border-gray-800 p-2 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
               <ChevronLeft className="w-4 h-4 text-orange-500" />
             </button>
-            <div className="border-y border-gray-200 px-6 py-1.5 font-bold text-sm min-w-[140px] text-center">
+            <div className="border-y border-gray-200 dark:border-gray-800 px-6 py-1.5 font-bold text-sm min-w-[140px] text-center">
               {formatDateRange(currentWeekDays)}
             </div>
-            <button onClick={handleNextWeek} className="border border-gray-200 p-2 hover:bg-gray-50 transition-colors">
+            <button onClick={handleNextWeek} className="border border-gray-200 dark:border-gray-800 p-2 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
               <ChevronRight className="w-4 h-4 text-orange-500" />
             </button>
           </div>
@@ -200,7 +202,7 @@ const MealPlanPage = () => {
 
         {/* Days Strip */}
         <div 
-          className="flex overflow-x-auto border border-gray-200 mb-10 snap-x"
+          className="flex overflow-x-auto border border-gray-200 dark:border-gray-800 mb-10 snap-x"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {currentWeekDays.map((day, idx) => {
@@ -234,7 +236,7 @@ const MealPlanPage = () => {
             return (
               <div 
                 key={idx} 
-                className={`border-r border-gray-200 py-3 flex flex-col items-center justify-center text-center shrink-0 w-[14.28%] min-w-[80px] snap-center ${bgClass}`}
+                className={`border-r border-gray-200 dark:border-gray-800 py-3 flex flex-col items-center justify-center text-center shrink-0 w-[14.28%] min-w-[80px] snap-center ${bgClass}`}
               >
                 <span className={`text-[10px] font-bold tracking-widest uppercase ${dayTextClass}`}>{dayName}</span>
                 <span className={`text-lg font-bold mt-1 ${isToday ? 'mb-1' : 'mb-2'} ${textClass}`}>{dateNum}</span>
@@ -252,7 +254,7 @@ const MealPlanPage = () => {
           <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-max">
             
             {/* Card 1: Today */}
-            <div className="border border-gray-200 flex flex-col h-full">
+            <div className="border border-gray-200 dark:border-gray-800 flex flex-col h-full bg-white dark:bg-gray-900 transition-colors">
               <div className="bg-[#ff6b2b] text-white px-4 py-3 flex justify-between items-center">
                 <span className="text-xs font-bold">Today • Oct 14</span>
                 <span className="text-[9px] font-black tracking-widest uppercase bg-white/20 px-2 py-0.5 rounded">Ready for delivery</span>
@@ -265,18 +267,18 @@ const MealPlanPage = () => {
                 />
               </div>
               <div className="p-5 flex flex-col flex-1">
-                <h3 className="text-lg font-black text-gray-900 mb-2">Mom's Classic Feast</h3>
-                <p className="text-xs text-gray-500 mb-5 leading-relaxed">
+                <h3 className="text-lg font-black text-gray-900 dark:text-white mb-2">Mom's Classic Feast</h3>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-5 leading-relaxed">
                   A rich blend of seasonal spices and artisan paneer.
                 </p>
                 <ul className="space-y-3 mt-auto">
-                  <li className="flex items-center gap-2 text-xs font-bold text-gray-700">
+                  <li className="flex items-center gap-2 text-xs font-bold text-gray-700 dark:text-gray-300">
                     <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div> Basmati Pilaf
                   </li>
-                  <li className="flex items-center gap-2 text-xs font-bold text-gray-700">
+                  <li className="flex items-center gap-2 text-xs font-bold text-gray-700 dark:text-gray-300">
                     <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div> Paneer Butter Masala
                   </li>
-                  <li className="flex items-center gap-2 text-xs font-bold text-gray-700">
+                  <li className="flex items-center gap-2 text-xs font-bold text-gray-700 dark:text-gray-300">
                     <div className="w-1.5 h-1.5 bg-[#ff6b2b] rounded-full"></div> Gulab Jamun (Add-on)
                   </li>
                 </ul>
@@ -285,9 +287,9 @@ const MealPlanPage = () => {
 
             {/* Card 2: Thursday */}
             {thursdayState === 'skipped' ? (
-              <div className="border border-gray-200 flex flex-col h-full">
-                <div className="bg-red-50/50 text-gray-900 px-4 py-3 flex justify-between items-center border-b border-red-100">
-                  <span className="text-xs font-bold text-gray-600">Thu • Oct 15</span>
+              <div className="border border-gray-200 dark:border-gray-800 flex flex-col h-full bg-white dark:bg-gray-900">
+                <div className="bg-red-50/50 dark:bg-red-500/5 text-gray-900 dark:text-white px-4 py-3 flex justify-between items-center border-b border-red-100 dark:border-red-500/10">
+                  <span className="text-xs font-bold text-gray-600 dark:text-gray-400">Thu • Oct 15</span>
                   <span className="text-[9px] font-black tracking-widest uppercase text-[#d93838]">Skipped</span>
                 </div>
                 <div className="flex-1 flex flex-col items-center justify-center p-8 text-center bg-gray-50/30">
@@ -301,10 +303,10 @@ const MealPlanPage = () => {
                 </div>
               </div>
             ) : (
-              <div className="border border-gray-200 flex flex-col h-full">
-                <div className="bg-orange-50 text-gray-900 px-4 py-3 flex justify-between items-center border-b border-orange-100">
+              <div className="border border-gray-200 dark:border-gray-800 flex flex-col h-full bg-white dark:bg-gray-900">
+                <div className="bg-orange-50 dark:bg-orange-500/5 text-gray-900 dark:text-white px-4 py-3 flex justify-between items-center border-b border-orange-100 dark:border-orange-500/10">
                   <span className="text-xs font-bold">Thu • Oct 15</span>
-                  <span className="text-[9px] font-black tracking-widest uppercase text-[#ff6b2b]">{thursdayState}</span>
+                  <span className="text-[9px] font-black tracking-widest uppercase text-[#ff6b2b] transition-colors">{thursdayState}</span>
                 </div>
                 <div className="h-40 w-full overflow-hidden p-4">
                   <img 
@@ -314,8 +316,8 @@ const MealPlanPage = () => {
                   />
                 </div>
                 <div className="p-5 flex flex-col flex-1">
-                  <h3 className="text-lg font-black text-gray-900 mb-2">Yellow Dal & Roti</h3>
-                  <p className="text-xs text-gray-500 mb-8 leading-relaxed">
+                  <h3 className="text-lg font-black text-gray-900 dark:text-white mb-2">Yellow Dal & Roti</h3>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mb-8 leading-relaxed">
                     Light and comforting lentil soup with handmade whole wheat rotis.
                   </p>
                   <div className="flex justify-between items-center mt-auto border-t border-gray-100 pt-4">
@@ -328,9 +330,9 @@ const MealPlanPage = () => {
 
             {/* Card 3: Friday */}
             {fridayState === 'skipped' ? (
-              <div className="border border-gray-200 flex flex-col h-full">
-                <div className="bg-red-50/50 text-gray-900 px-4 py-3 flex justify-between items-center border-b border-red-100">
-                  <span className="text-xs font-bold text-gray-600">Fri • Oct 16</span>
+              <div className="border border-gray-200 dark:border-gray-800 flex flex-col h-full bg-white dark:bg-gray-900">
+                <div className="bg-red-50/50 dark:bg-red-500/5 text-gray-900 dark:text-white px-4 py-3 flex justify-between items-center border-b border-red-100 dark:border-red-500/10">
+                  <span className="text-xs font-bold text-gray-600 dark:text-gray-400">Fri • Oct 16</span>
                   <span className="text-[9px] font-black tracking-widest uppercase text-[#d93838]">Skipped</span>
                 </div>
                 <div className="flex-1 flex flex-col items-center justify-center p-8 text-center bg-gray-50/30">
@@ -344,10 +346,10 @@ const MealPlanPage = () => {
                 </div>
               </div>
             ) : (
-              <div className="border border-gray-200 flex flex-col h-full">
-                <div className="bg-gray-50 text-gray-900 px-4 py-3 flex justify-between items-center border-b border-gray-200">
+              <div className="border border-gray-200 dark:border-gray-800 flex flex-col h-full bg-white dark:bg-gray-900">
+                <div className="bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white px-4 py-3 flex justify-between items-center border-b border-gray-200 dark:border-gray-700">
                   <span className="text-xs font-bold">Fri • Oct 16</span>
-                  <span className="text-[9px] font-black tracking-widest uppercase text-gray-600">Planned</span>
+                  <span className="text-[9px] font-black tracking-widest uppercase text-gray-600 dark:text-gray-400">Planned</span>
                 </div>
                 <div className="h-40 w-full overflow-hidden p-4">
                   <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc0?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover rounded shadow-sm" alt="Aloo Gobi" />
@@ -365,9 +367,9 @@ const MealPlanPage = () => {
 
             {/* Card 4: Saturday */}
             {saturdayState === 'unplanned' ? (
-              <div className="border border-gray-200 flex flex-col h-full">
-                <div className="bg-gray-50 text-gray-900 px-4 py-3 flex justify-between items-center border-b border-gray-200">
-                  <span className="text-xs font-bold text-gray-600">Sat • Oct 17</span>
+              <div className="border border-gray-200 dark:border-gray-800 flex flex-col h-full bg-white dark:bg-gray-900">
+                <div className="bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white px-4 py-3 flex justify-between items-center border-b border-gray-200 dark:border-gray-700">
+                  <span className="text-xs font-bold text-gray-600 dark:text-gray-400">Sat • Oct 17</span>
                   <span className="text-[9px] font-black tracking-widest uppercase text-gray-500">Unplanned</span>
                 </div>
                 <div className="flex-1 p-6">
@@ -380,10 +382,10 @@ const MealPlanPage = () => {
                 </div>
               </div>
             ) : (
-              <div className="border border-gray-200 flex flex-col h-full">
-                <div className="bg-gray-50 text-gray-900 px-4 py-3 flex justify-between items-center border-b border-gray-200">
+              <div className="border border-gray-200 dark:border-gray-800 flex flex-col h-full bg-white dark:bg-gray-900">
+                <div className="bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white px-4 py-3 flex justify-between items-center border-b border-gray-200 dark:border-gray-700">
                   <span className="text-xs font-bold">Sat • Oct 17</span>
-                  <span className="text-[9px] font-black tracking-widest uppercase text-gray-600">Planned</span>
+                  <span className="text-[9px] font-black tracking-widest uppercase text-gray-600 dark:text-gray-400">Planned</span>
                 </div>
                 <div className="h-40 w-full overflow-hidden p-4">
                   <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover rounded shadow-sm" alt="Palak Paneer" />
@@ -405,16 +407,16 @@ const MealPlanPage = () => {
           <div className="space-y-6">
             
             {/* Nutrition Snapshot */}
-            <div className="border border-gray-200 bg-[#faf9f8] p-6">
-              <h3 className="text-base font-bold text-gray-900 mb-6">Nutrition Snapshot</h3>
+            <div className="border border-gray-200 dark:border-gray-800 bg-[#faf9f8] dark:bg-gray-800/50 p-6 transition-colors">
+              <h3 className="text-base font-bold text-gray-900 dark:text-white mb-6">Nutrition Snapshot</h3>
               
               <div className="space-y-5">
                 <div>
                   <div className="flex justify-between text-xs font-bold mb-1.5">
-                    <span className="text-gray-700">Daily Calories</span>
+                    <span className="text-gray-700 dark:text-gray-300">Daily Calories</span>
                     <span className="text-[#ff6b2b]">1,850 Kcal</span>
                   </div>
-                  <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="w-full h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
                     <div className="h-full bg-[#ff6b2b]" style={{ width: '85%' }}></div>
                   </div>
                 </div>
@@ -452,27 +454,27 @@ const MealPlanPage = () => {
             </div>
 
             {/* Weekly Costing */}
-            <div className="border border-gray-200">
-              <div className="bg-[#1c1c1c] text-white text-[10px] font-black tracking-widest uppercase p-4">
+            <div className="border border-gray-200 dark:border-gray-800 transition-colors">
+              <div className="bg-[#1c1c1c] dark:bg-[#000000] text-white text-[10px] font-black tracking-widest uppercase p-4">
                 Weekly Costing
               </div>
               <div className="p-5">
-                <ul className="space-y-4 text-xs font-medium text-gray-600">
+                <ul className="space-y-4 text-xs font-medium text-gray-600 dark:text-gray-400">
                   <li className="flex justify-between">
                     <span>Mon - Kitchen Sector 5</span>
-                    <span className="font-bold text-gray-900">180</span>
+                    <span className="font-bold text-gray-900 dark:text-white">180</span>
                   </li>
                   <li className="flex justify-between">
                     <span>Tue - Kitchen Sector 5</span>
-                    <span className="font-bold text-gray-900">180</span>
+                    <span className="font-bold text-gray-900 dark:text-white">180</span>
                   </li>
                   <li className="flex justify-between">
                     <span>Wed - Today's Special</span>
-                    <span className="font-bold text-gray-900">210</span>
+                    <span className="font-bold text-gray-900 dark:text-white">210</span>
                   </li>
                   <li className="flex justify-between">
                     <span>Thu - Customized</span>
-                    <span className="font-bold text-gray-900">195</span>
+                    <span className="font-bold text-gray-900 dark:text-white">195</span>
                   </li>
                   <li className="flex justify-between">
                     <span>Fri - Skipped</span>
@@ -480,8 +482,8 @@ const MealPlanPage = () => {
                   </li>
                 </ul>
 
-                <div className="mt-6 pt-5 border-t border-dashed border-gray-300 flex justify-between items-center">
-                  <span className="text-sm font-black text-gray-900">Total</span>
+                <div className="mt-6 pt-5 border-t border-dashed border-gray-300 dark:border-gray-700 flex justify-between items-center">
+                  <span className="text-sm font-black text-gray-900 dark:text-white">Total</span>
                   <span className="text-xl font-black text-[#ff6b2b]">765</span>
                 </div>
               </div>

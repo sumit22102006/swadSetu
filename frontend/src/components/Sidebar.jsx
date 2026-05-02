@@ -20,7 +20,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="w-64 bg-white border-r border-gray-100 min-h-screen p-6 flex flex-col">
+    <div className="w-64 bg-white dark:bg-[#0a0a0a] border-r border-gray-100 dark:border-gray-800 min-h-screen p-6 flex flex-col transition-colors duration-300">
       <div className="mb-10">
         <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-4">Navigation</h3>
         <p className="text-xs text-gray-500 font-medium -mt-3 mb-6">Manage your meals</p>
@@ -35,8 +35,8 @@ const Sidebar = () => {
               to={item.path}
               className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all relative ${
                 isActive 
-                ? 'text-orange-500 bg-orange-50 font-bold' 
-                : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50 font-medium'
+                ? 'text-orange-500 bg-orange-50 dark:bg-orange-500/10 font-bold' 
+                : 'text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-900 font-medium'
               }`}
             >
               {isActive && (

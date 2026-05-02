@@ -45,21 +45,21 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white dark:bg-gray-950 transition-colors duration-300">
       <div className="container">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-secondary mb-4 relative inline-block after:content-[''] after:block after:w-12 after:h-1 after:bg-primary after:mx-auto after:mt-4">
+          <h2 className="text-4xl font-bold text-secondary dark:text-white mb-4 relative inline-block after:content-[''] after:block after:w-12 after:h-1 after:bg-primary after:mx-auto after:mt-4">
             How It Works
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {steps.map((step, index) => (
-            <div key={index} className="bg-bg-light p-10 rounded-lg text-center transition-all duration-300 hover:bg-white hover:-translate-y-2 hover:shadow-xl">
+            <div key={index} className="bg-bg-light dark:bg-gray-900 p-10 rounded-lg text-center transition-all duration-300 hover:bg-white dark:hover:bg-gray-800 hover:-translate-y-2 hover:shadow-xl dark:shadow-none">
               <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-5 text-2xl">
                 {step.icon}
               </div>
-              <h3 className="text-xl font-bold mb-4">{step.title}</h3>
-              <p className="text-text-light text-sm">{step.desc}</p>
+              <h3 className="text-xl font-bold mb-4 dark:text-white transition-colors">{step.title}</h3>
+              <p className="text-text-light dark:text-gray-400 text-sm transition-colors">{step.desc}</p>
             </div>
           ))}
         </div>

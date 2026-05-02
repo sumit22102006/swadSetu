@@ -17,20 +17,20 @@ const FormField = ({ label, ...props }) => {
           <textarea
             {...field}
             {...props}
-            className={`w-full p-3 border rounded-sm text-sm outline-none transition-all bg-white min-h-[100px] resize-none ${
+            className={`w-full p-3 border rounded-sm text-sm outline-none transition-all bg-white dark:bg-gray-900 dark:text-white dark:border-gray-800 min-h-[100px] resize-none ${
               isError 
                 ? 'border-red-500 focus:border-red-500' 
-                : 'border-gray-200 focus:border-[#f26b1d]'
+                : 'border-gray-200 dark:border-gray-800 focus:border-[#f26b1d]'
             }`}
           />
         ) : (
           <input
             {...field}
             {...props}
-            className={`w-full p-3 border rounded-sm text-sm outline-none transition-all bg-white ${
+            className={`w-full p-3 border rounded-sm text-sm outline-none transition-all bg-white dark:bg-gray-900 dark:text-white dark:border-gray-800 ${
               isError 
                 ? 'border-red-500 focus:border-red-500' 
-                : 'border-gray-200 focus:border-[#f26b1d]'
+                : 'border-gray-200 dark:border-gray-800 focus:border-[#f26b1d]'
             }`}
           />
         )}

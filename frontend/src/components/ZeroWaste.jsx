@@ -2,14 +2,14 @@ import React from 'react';
 
 const ZeroWaste = () => {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white dark:bg-gray-950 transition-colors duration-300">
       <div className="container">
         <div className="flex flex-col lg:flex-row items-center gap-20">
           <div className="flex-1 w-full">
             <img src="/images/zero_waste.png" alt="Stainless Steel Tiffins" className="rounded-lg w-full shadow-lg" />
           </div>
           <div className="flex-1">
-            <h2 className="text-4xl font-bold mb-2">Zero Waste Living</h2>
+            <h2 className="text-4xl font-bold mb-2 dark:text-white">Zero Waste Living</h2>
             <span className="italic text-primary text-lg mb-8 block">"Good for your soul, better for our planet"</span>
             
             <div className="flex gap-5 mb-6">
@@ -19,8 +19,8 @@ const ZeroWaste = () => {
                 </svg>
               </div>
               <div>
-                <h4 className="font-bold mb-1">No Single-Use Plastic</h4>
-                <p className="text-text-light text-sm">Every meal arrives in high-grade stainless steel tiffins, eliminating thousands of plastic containers every month.</p>
+                <h4 className="font-bold mb-1 dark:text-white">No Single-Use Plastic</h4>
+                <p className="text-text-light dark:text-gray-400 text-sm">Every meal arrives in high-grade stainless steel tiffins, eliminating thousands of plastic containers every month.</p>
               </div>
             </div>
 
@@ -31,8 +31,8 @@ const ZeroWaste = () => {
                 </svg>
               </div>
               <div>
-                <h4 className="font-bold mb-1">Artisanal Sourcing</h4>
-                <p className="text-text-light text-sm">We source directly from local farmers, reducing the carbon footprint and ensuring the freshest ingredients possible.</p>
+                <h4 className="font-bold mb-1 dark:text-white">Artisanal Sourcing</h4>
+                <p className="text-text-light dark:text-gray-400 text-sm">We source directly from local farmers, reducing the carbon footprint and ensuring the freshest ingredients possible.</p>
               </div>
             </div>
 

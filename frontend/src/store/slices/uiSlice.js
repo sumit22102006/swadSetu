@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isLoading: false,
-  theme: 'light',
+  theme: localStorage.getItem('theme') || 'light',
   isSidebarOpen: true,
 };
 
@@ -15,6 +15,7 @@ const uiSlice = createSlice({
     },
     toggleTheme: (state) => {
       state.theme = state.theme === 'light' ? 'dark' : 'light';
+      localStorage.setItem('theme', state.theme);
     },
     toggleSidebar: (state) => {
       state.isSidebarOpen = !state.isSidebarOpen;

@@ -9,6 +9,7 @@ import { setLoading } from '../store/slices/uiSlice';
 import api from '../services/api';
 import FormField from '../components/FormField';
 import { ChevronRight, ArrowLeft, Check } from 'lucide-react';
+import ThemeToggle from '../components/ThemeToggle';
 
 const validationSchemas = [
   Yup.object({
@@ -79,7 +80,7 @@ const SignupPage = () => {
   const prevStep = () => setStep(s => s - 1);
 
   return (
-    <div className="flex min-h-screen w-full bg-[#fffaf7] font-sans">
+    <div className="flex min-h-screen w-full bg-[#fffaf7] dark:bg-gray-950 font-sans transition-colors duration-300">
       {/* Left Side - Image */}
       <div 
         className="hidden md:flex flex-[1.2] bg-cover bg-center relative"
@@ -96,24 +97,27 @@ const SignupPage = () => {
       </div>
 
       {/* Right Side - Form */}
-      <div className="flex-1 flex items-center justify-center p-6 md:p-15">
+      <div className="flex-1 flex items-center justify-center p-6 md:p-15 relative">
+        <div className="absolute top-8 right-8">
+          <ThemeToggle />
+        </div>
         <div className="w-full max-w-[400px]">
           {/* Step Indicator */}
           <div className="flex gap-2 mb-12">
             {[1, 2, 3].map((s) => (
               <div key={s} className="flex-1 flex flex-col gap-2">
-                <div className={`h-1 rounded-full transition-all duration-500 ${s <= step ? 'bg-orange-500' : 'bg-gray-100'}`}></div>
-                <span className={`text-[9px] font-black uppercase tracking-widest ${s === step ? 'text-gray-900' : 'text-gray-300'}`}>
+                <div className={`h-1 rounded-full transition-all duration-500 ${s <= step ? 'bg-orange-500' : 'bg-gray-100 dark:bg-gray-800'}`}></div>
+                <span className={`text-[9px] font-black uppercase tracking-widest ${s === step ? 'text-gray-900 dark:text-gray-100' : 'text-gray-300 dark:text-gray-600'}`}>
                   {s === 1 ? 'Identity' : s === 2 ? 'Contact' : 'Security'}
                 </span>
               </div>
             ))}
           </div>
 
-          <h1 className="text-3xl font-bold mb-2 text-secondary">
+          <h1 className="text-3xl font-bold mb-2 text-secondary dark:text-white">
             {step === 1 ? 'Start your journey' : step === 2 ? 'Almost there' : 'One last step'}
           </h1>
-          <p className="text-sm text-text-light mb-10">
+          <p className="text-sm text-text-light dark:text-gray-400 mb-10">
             {step === 1 ? 'Tell us who you are.' : step === 2 ? 'How can we reach you?' : 'Protect your account.'}
           </p>
           
@@ -155,7 +159,7 @@ const SignupPage = () => {
                     <button 
                       type="button"
                       onClick={prevStep}
-                      className="flex-[0.5] py-3.5 border border-gray-200 rounded-sm text-[11px] font-bold uppercase tracking-widest text-gray-500 hover:bg-gray-50 transition-all flex items-center justify-center gap-2"
+                      className="flex-[0.5] py-3.5 border border-gray-200 dark:border-gray-800 rounded-sm text-[11px] font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-900 transition-all flex items-center justify-center gap-2"
                     >
                       <ArrowLeft className="w-3.5 h-3.5" /> Back
                     </button>
@@ -165,7 +169,7 @@ const SignupPage = () => {
                     <button 
                       type="button"
                       onClick={() => nextStep(validateForm, setTouched, values)}
-                      className="flex-1 bg-gray-900 text-white py-3.5 rounded-sm text-[11px] font-bold uppercase tracking-widest hover:bg-gray-800 transition-all flex items-center justify-center gap-2 shadow-xl shadow-gray-200"
+                      className="flex-1 bg-gray-900 dark:bg-white dark:text-gray-900 text-white py-3.5 rounded-sm text-[11px] font-bold uppercase tracking-widest hover:bg-gray-800 dark:hover:bg-gray-100 transition-all flex items-center justify-center gap-2 shadow-xl shadow-gray-200 dark:shadow-none"
                     >
                       Next Step <ChevronRight className="w-3.5 h-3.5" />
                     </button>

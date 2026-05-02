@@ -16,6 +16,7 @@ import {
   ShieldCheck
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ThemeToggle from '../components/ThemeToggle';
 
 const SupportPage = () => {
   const [openFaq, setOpenFaq] = useState(0);
@@ -53,9 +54,9 @@ const SupportPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#f8f9fa] font-sans text-gray-800 pb-12">
+    <div className="min-h-screen bg-[#f8f9fa] dark:bg-gray-950 font-sans text-gray-800 dark:text-gray-200 pb-12 transition-colors duration-300">
       {/* Header */}
-      <header className="bg-[#121212] text-white pt-8 pb-24 px-6 relative overflow-hidden">
+      <header className="bg-[#121212] dark:bg-[#000000] text-white pt-8 pb-24 px-6 relative overflow-hidden transition-colors">
         <div className="absolute top-0 right-0 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl -mr-20 -mt-20"></div>
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange-500/5 rounded-full blur-3xl -ml-20 -mb-20"></div>
 
@@ -67,8 +68,11 @@ const SupportPage = () => {
             <span className="text-xs font-bold uppercase tracking-widest text-gray-400 group-hover:text-white transition-colors">Back to Home</span>
           </Link>
           <div className="text-2xl font-black tracking-tight">swadSetu<span className="text-orange-500">.</span></div>
-          <div className="bg-orange-500/10 border border-orange-500/20 px-4 py-1.5 rounded-full text-[10px] font-bold text-orange-400 uppercase tracking-widest cursor-pointer hover:bg-orange-500/20 transition-all">
-            My Tickets
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
+            <div className="bg-orange-500/10 border border-orange-500/20 px-4 py-1.5 rounded-full text-[10px] font-bold text-orange-400 uppercase tracking-widest cursor-pointer hover:bg-orange-500/20 transition-all">
+              My Tickets
+            </div>
           </div>
         </div>
 
@@ -83,7 +87,7 @@ const SupportPage = () => {
             <input 
               type="text" 
               placeholder="Search for 'delivery status', 'cancel meal', 'refund'..." 
-              className="w-full py-5 pl-8 pr-36 rounded-2xl bg-white text-gray-900 shadow-2xl border-none outline-none text-sm placeholder:text-gray-400 relative z-10 font-medium"
+              className="w-full py-5 pl-8 pr-36 rounded-2xl bg-white dark:bg-gray-900 text-gray-900 dark:text-white shadow-2xl border-none outline-none text-sm placeholder:text-gray-400 relative z-10 font-medium transition-colors"
             />
             <button className="absolute right-2 top-2 bottom-2 bg-orange-600 hover:bg-orange-700 text-white px-8 rounded-xl transition-all text-xs font-black uppercase tracking-widest relative z-20">
               Search
@@ -101,12 +105,12 @@ const SupportPage = () => {
             { icon: Phone, title: "Call Us", sub: "Urgent delivery issue? Call our center direct line.", color: "text-green-600", bg: "bg-green-50", action: "Dial +1-800-SWAD" },
             { icon: Mail, title: "Send Email", sub: "For billing inquiries or plan changes anytime.", color: "text-blue-600", bg: "bg-blue-50", action: "Email Support" }
           ].map((card, i) => (
-            <div key={i} className="bg-white p-10 rounded-3xl shadow-xl shadow-gray-200/50 border border-gray-100 flex flex-col items-center text-center group hover:-translate-y-1 transition-all">
+            <div key={i} className="bg-white dark:bg-gray-900 p-10 rounded-3xl shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-gray-800 flex flex-col items-center text-center group hover:-translate-y-1 transition-all">
               <div className={`w-14 h-14 ${card.bg} ${card.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
                 <card.icon size={28} />
               </div>
-              <h3 className="font-black text-xl mb-3">{card.title}</h3>
-              <p className="text-xs text-gray-500 mb-6 font-medium leading-relaxed">{card.sub}</p>
+              <h3 className="font-black text-xl mb-3 text-gray-900 dark:text-white transition-colors">{card.title}</h3>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-6 font-medium leading-relaxed transition-colors">{card.sub}</p>
               <button className={`${card.color} text-[10px] font-black uppercase tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all`}>
                 {card.action} <ChevronRight size={14} />
               </button>
@@ -118,7 +122,7 @@ const SupportPage = () => {
         <section className="mb-20">
           <div className="flex items-center gap-3 mb-10">
             <div className="w-8 h-1 bg-orange-500 rounded-full"></div>
-            <h2 className="text-2xl font-black tracking-tight">Browse by Topic</h2>
+            <h2 className="text-2xl font-black tracking-tight text-gray-900 dark:text-white transition-colors">Browse by Topic</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {topics.map((topic, i) => (
@@ -148,19 +152,19 @@ const SupportPage = () => {
             </h2>
             <div className="space-y-4">
               {faqs.map((faq, i) => (
-                <div key={i} className={`bg-white rounded-2xl border transition-all ${openFaq === i ? 'border-orange-500 shadow-lg shadow-orange-50' : 'border-gray-100'}`}>
+                <div key={i} className={`bg-white dark:bg-gray-900 rounded-2xl border transition-all ${openFaq === i ? 'border-orange-500 shadow-lg shadow-orange-50 dark:shadow-none' : 'border-gray-100 dark:border-gray-800'}`}>
                   <button 
-                    className="w-full p-6 text-left flex justify-between items-center hover:bg-gray-50/50 rounded-2xl transition-colors"
+                    className="w-full p-6 text-left flex justify-between items-center hover:bg-gray-50/50 dark:hover:bg-gray-800 rounded-2xl transition-colors"
                     onClick={() => setOpenFaq(openFaq === i ? -1 : i)}
                   >
-                    <span className={`text-sm font-black tracking-tight ${openFaq === i ? 'text-orange-600' : 'text-gray-800'}`}>
+                    <span className={`text-sm font-black tracking-tight ${openFaq === i ? 'text-orange-600' : 'text-gray-800 dark:text-white'}`}>
                       {faq.question}
                     </span>
                     {openFaq === i ? <ChevronUp size={20} className="text-orange-500" /> : <ChevronDown size={20} className="text-gray-400" />}
                   </button>
                   {openFaq === i && (
                     <div className="px-6 pb-6 pt-0">
-                      <p className="text-sm text-gray-500 leading-relaxed border-t border-gray-50 pt-5 font-medium">
+                      <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed border-t border-gray-50 dark:border-gray-800 pt-5 font-medium">
                         {faq.answer}
                       </p>
                     </div>
@@ -172,8 +176,8 @@ const SupportPage = () => {
 
           {/* Sidebar Form */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-3xl shadow-2xl shadow-gray-200/50 overflow-hidden border border-gray-100 sticky top-24">
-              <div className="bg-[#121212] p-8 text-white relative">
+            <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl shadow-gray-200/50 dark:shadow-none overflow-hidden border border-gray-100 dark:border-gray-800 sticky top-24 transition-colors">
+              <div className="bg-[#121212] dark:bg-[#000000] p-8 text-white relative">
                 <div className="absolute top-0 right-0 w-24 h-24 bg-orange-500/20 rounded-full blur-2xl"></div>
                 <h3 className="font-black text-xl mb-2 relative z-10">Submit a request</h3>
                 <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest relative z-10">Response time: &lt; 2 hours</p>
@@ -181,12 +185,12 @@ const SupportPage = () => {
               <div className="p-8 space-y-6">
                 <div className="space-y-2">
                   <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Your Name</label>
-                  <input type="text" placeholder="Arjun Kumar" className="w-full p-4 bg-gray-50 border border-gray-100 rounded-xl text-sm font-medium outline-none focus:border-orange-500 transition-colors" />
+                  <input type="text" placeholder="Arjun Kumar" className="w-full p-4 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl text-sm font-medium outline-none focus:border-orange-500 transition-colors dark:text-white" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Issue Type</label>
                   <div className="relative">
-                    <select className="w-full p-4 bg-gray-50 border border-gray-100 rounded-xl text-sm font-medium outline-none focus:border-orange-500 appearance-none transition-colors">
+                    <select className="w-full p-4 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl text-sm font-medium outline-none focus:border-orange-500 appearance-none transition-colors dark:text-white">
                       <option>Select a category</option>
                       <option>Delivery Delay</option>
                       <option>Quality Issue</option>
@@ -200,10 +204,10 @@ const SupportPage = () => {
                   <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Description</label>
                   <textarea 
                     placeholder="Tell us more about the issue..." 
-                    className="w-full p-4 bg-gray-50 border border-gray-100 rounded-xl text-sm font-medium outline-none focus:border-orange-500 h-32 resize-none transition-colors"
+                    className="w-full p-4 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl text-sm font-medium outline-none focus:border-orange-500 h-32 resize-none transition-colors dark:text-white"
                   ></textarea>
                 </div>
-                <button className="w-full bg-orange-600 hover:bg-orange-700 text-white p-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl shadow-orange-100 transition-all active:scale-[0.98]">
+                <button className="w-full bg-orange-600 hover:bg-orange-700 text-white p-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl shadow-orange-100 dark:shadow-none transition-all active:scale-[0.98]">
                   Submit Request
                 </button>
               </div>
@@ -239,16 +243,16 @@ const SupportPage = () => {
       </main>
 
       {/* Footer */}
-      <footer className="max-w-6xl mx-auto px-6 mt-32 pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8 text-gray-400 text-[10px] font-bold pb-20">
+      <footer className="max-w-6xl mx-auto px-6 mt-32 pt-12 border-t border-gray-100 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-8 text-gray-400 text-[10px] font-bold pb-20">
         <div className="flex items-center gap-10">
-          <span className="text-gray-900 text-sm font-black tracking-tight">swadSetu<span className="text-orange-500">.</span></span>
-          <span className="font-medium">© 2024 SwadSetu. Built for honesty and clarity.</span>
+          <span className="text-gray-900 dark:text-white text-sm font-black tracking-tight">swadSetu<span className="text-orange-500">.</span></span>
+          <span className="font-medium text-gray-400 dark:text-gray-500">© 2024 SwadSetu. Built for honesty and clarity.</span>
         </div>
-        <div className="flex gap-8 uppercase tracking-widest">
-          <Link to="/support" className="text-gray-900 transition-colors">Help Center</Link>
-          <Link to="/privacy" className="hover:text-gray-900 transition-colors">Privacy Policy</Link>
-          <Link to="/contact" className="hover:text-gray-900 transition-colors">Contact Us</Link>
-          <Link to="/faq" className="hover:text-gray-900 transition-colors">FAQ</Link>
+        <div className="flex gap-8 uppercase tracking-widest transition-colors">
+          <Link to="/support" className="text-gray-900 dark:text-white transition-colors">Help Center</Link>
+          <Link to="/privacy" className="hover:text-gray-900 dark:hover:text-white transition-colors">Privacy Policy</Link>
+          <Link to="/contact" className="hover:text-gray-900 dark:hover:text-white transition-colors">Contact Us</Link>
+          <Link to="/faq" className="hover:text-gray-900 dark:hover:text-white transition-colors">FAQ</Link>
         </div>
       </footer>
     </div>
