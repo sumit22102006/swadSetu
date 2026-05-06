@@ -1,6 +1,6 @@
 # 🍱 swadSetu — Daily Meal Customization App
 
-[🌐 Live Demo](https://swad-setu.vercel.app/dashboard) &nbsp;|&nbsp; [🎨 View Figma Design](https://www.figma.com/design/0G1vW5J1TUzcN5xOSTIuRK/Untitled?node-id=0-1&t=ty2KsFQN4h3CN5mP-1)
+[🌐 Live Demo](https://swad-setu.vercel.app/dashboard) &nbsp;|&nbsp; [🎨 View Figma Design](https://www.figma.com/design/0G1vW5J1TUzcN5xOSTIuRK/Untitled?node-id=0-1&t=ty2KsFQN4h3CN5mP-1) &nbsp;|&nbsp; [📺 YouTube Video](https://youtu.be/HqLSkdpQawc?si=7YterkGSaIhaynlN) &nbsp;|&nbsp; [📖 Postman Docs](https://documenter.getpostman.com/view/54465064/2sBXqKofTg) &nbsp;|&nbsp; [⚙️ Backend API](https://swadsetu-4.onrender.com)
 
 ---
 
