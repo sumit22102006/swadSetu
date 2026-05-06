@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Allow: /login
+Allow: /signup
+Allow: /support
+Disallow: /dashboard
+Disallow: /profile
+Disallow: /meal-plans
+Disallow: /deliveries
+Disallow: /preferences
+
+Sitemap: https://swad-setu.vercel.app/sitemap.xml

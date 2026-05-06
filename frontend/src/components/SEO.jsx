@@ -6,8 +6,8 @@ const SEO = ({ title, description, keywords, image, url, type = 'website' }) => 
   const fullTitle = title ? `${title} | ${siteTitle}` : siteTitle;
   const defaultDesc = 'Premium artisan tiffin service connecting you with local kitchen artisans for healthy, home-cooked meals delivered daily.';
   const defaultKeywords = 'tiffin service, healthy meals, local kitchens, artisan food, meal delivery, SwadSetu';
-  const siteUrl = 'https://swadsetu.com'; // Placeholder domain
-  const defaultImage = '/og-image.jpg'; // Placeholder image
+  const siteUrl = 'https://swad-setu.vercel.app';
+  const defaultImage = '/preview.png.png'; // Use actual preview image for OG tags
 
   return (
     <Helmet>
