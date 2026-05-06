@@ -42,7 +42,7 @@ const FeaturedKitchens = () => {
   return (
     <section className="py-20 bg-bg-light dark:bg-gray-950 transition-colors duration-300">
       <div className="container">
-        <div className="flex justify-between items-end mb-10">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3 mb-10">
           <div>
             <h2 className="text-4xl font-bold mb-1 dark:text-white">Featured Kitchens</h2>
             <p className="text-text-light dark:text-gray-400 text-sm">The soul of swadSetu lies in our local artisan partners.</p>

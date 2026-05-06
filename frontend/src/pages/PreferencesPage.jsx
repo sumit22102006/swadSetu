@@ -41,12 +41,12 @@ const PreferencesPage = () => {
 
       <div className="flex-1 flex flex-col">
         {/* Header */}
-        <header className="bg-[#121212] dark:bg-[#000000] px-8 py-4 flex justify-between items-center sticky top-0 z-40 shadow-xl transition-colors">
+        <header className="bg-[#121212] dark:bg-[#000000] pl-16 lg:pl-8 pr-4 sm:pr-8 py-4 flex justify-between items-center sticky top-0 z-40 shadow-xl transition-colors">
           <div className="flex items-center gap-3">
             <div className="w-2.5 h-2.5 bg-orange-500 rounded-full animate-pulse"></div>
             <span className="text-xl font-bold text-white tracking-tight">Preferences</span>
           </div>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-3 sm:gap-6">
             <ThemeToggle />
             <div className="w-9 h-9 bg-orange-500 rounded-full flex items-center justify-center text-white overflow-hidden cursor-pointer">
               {user?.profileImage ? (
@@ -59,10 +59,10 @@ const PreferencesPage = () => {
         </header>
 
         {/* Content */}
-        <main className="p-8 md:p-12 overflow-y-auto">
+        <main className="p-4 sm:p-8 md:p-12 overflow-y-auto">
           <div className="max-w-6xl mx-auto">
             {/* Preferences Header */}
-            <div className="flex justify-between items-start mb-10">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-10">
               <div>
                 <h1 className="text-3xl font-black text-gray-900 dark:text-white tracking-tight">Dietary Preferences</h1>
                 <p className="text-gray-500 dark:text-gray-400 text-sm mt-1 font-medium">These global settings apply to all your delivery centers automatically.</p>
@@ -214,7 +214,7 @@ const PreferencesPage = () => {
               </div>
             </div>
 
-            <div className="mt-12 flex items-center justify-end gap-6">
+            <div className="mt-12 flex flex-col sm:flex-row items-center justify-end gap-4 sm:gap-6">
               <button className="text-[10px] font-black text-gray-400 uppercase tracking-widest hover:text-gray-600 transition-colors">Discard changes</button>
               <button 
                 onClick={() => toast.success('Preferences saved successfully')}

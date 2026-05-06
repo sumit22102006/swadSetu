@@ -75,13 +75,13 @@ const DashboardPage = () => {
 
       <div className="flex-1 flex flex-col">
         {/* Header */}
-        <header className="bg-white dark:bg-[#000000] px-8 py-4 flex justify-between items-center sticky top-0 z-40 shadow-sm dark:shadow-xl border-b border-gray-100 dark:border-white/5 transition-colors duration-300">
+        <header className="bg-white dark:bg-[#000000] pl-16 lg:pl-8 pr-4 sm:pr-8 py-4 flex justify-between items-center sticky top-0 z-40 shadow-sm dark:shadow-xl border-b border-gray-100 dark:border-white/5 transition-colors duration-300">
           <div className="flex items-center gap-3">
             <div className="w-2.5 h-2.5 bg-orange-500 rounded-full animate-pulse"></div>
             <span className="text-xl font-bold text-gray-900 dark:text-white tracking-tight transition-colors">swadSetu</span>
           </div>
-          <div className="flex items-center gap-6">
-            <div className="group relative">
+          <div className="flex items-center gap-2 sm:gap-6">
+            <div className="group relative hidden sm:block">
               <div className="bg-orange-500/10 border border-orange-500/20 px-3 py-1.5 rounded-full text-[10px] font-bold text-orange-400 uppercase tracking-widest flex items-center gap-2 cursor-help">
                 <Star className="w-3 h-3 fill-orange-400" />
                 Standard Plan
@@ -109,11 +109,11 @@ const DashboardPage = () => {
         </header>
 
         {/* Main Content */}
-        <main className="p-8 lg:p-12 max-w-6xl w-full mx-auto">
+        <main className="p-4 sm:p-8 lg:p-12 max-w-6xl w-full mx-auto">
           {/* Greeting & Quick Actions */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 md:mb-12 gap-4 md:gap-6">
             <div>
-              <h1 className="text-4xl font-black text-gray-900 dark:text-white mb-2 tracking-tight transition-colors">
+              <h1 className="text-2xl sm:text-4xl font-black text-gray-900 dark:text-white mb-2 tracking-tight transition-colors">
                 {getGreeting()}, {userInfo?.name?.split(' ')[0] || 'User'}
               </h1>
               <p className="text-gray-500 dark:text-gray-400 font-medium flex items-center gap-2 transition-colors">
@@ -121,7 +121,7 @@ const DashboardPage = () => {
                 Next delivery: <span className="text-gray-900 dark:text-gray-100 font-bold">{isSkipped ? 'Tomorrow' : `${deliveryTime} Today`}</span> from Annapurna Kitchen
               </p>
             </div>
-            <div className="flex gap-3">
+            <div className="flex flex-wrap gap-3">
               <button 
                 onClick={() => setIsSkipped(!isSkipped)}
                 className={`px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all ${
@@ -141,7 +141,7 @@ const DashboardPage = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10">
             {/* Left Main Content */}
             <div className="lg:col-span-2 space-y-10">
               {/* Stats Cards */}
@@ -180,7 +180,7 @@ const DashboardPage = () => {
               {/* Featured Card */}
               <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-xl shadow-gray-200/50 dark:shadow-none overflow-hidden group border border-gray-100 dark:border-gray-800">
                 <div className="flex flex-col md:flex-row">
-                  <div className="md:w-5/12 relative overflow-hidden h-[250px] md:h-auto">
+                  <div className="w-full md:w-5/12 relative overflow-hidden h-[200px] md:h-auto">
                     <img 
                       src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&q=80&w=1000" 
                       alt="Today's Special Thali" 
@@ -190,12 +190,12 @@ const DashboardPage = () => {
                       Freshly Prepared
                     </div>
                   </div>
-                  <div className="md:w-7/12 p-8 lg:p-12 flex flex-col justify-center">
+                  <div className="w-full md:w-7/12 p-6 lg:p-12 flex flex-col justify-center">
                     <div className="flex items-center gap-2 mb-4">
                       <span className="w-8 h-px bg-orange-500"></span>
                       <span className="text-[10px] font-black text-orange-500 uppercase tracking-[0.2em]">Chef's Special</span>
                     </div>
-                    <h2 className="text-3xl font-black text-gray-900 dark:text-white mb-4 leading-tight">Today's Special Thali</h2>
+                    <h2 className="text-xl sm:text-3xl font-black text-gray-900 dark:text-white mb-4 leading-tight">Today's Special Thali</h2>
                     <p className="text-gray-500 leading-relaxed mb-8 font-medium">
                       Slow-cooked yellow dal tadka, jeera rice, aloo gobhi matar, and two handmade whole wheat rotis.
                     </p>
@@ -306,7 +306,7 @@ const DashboardPage = () => {
 
           {/* New Horizontal Discovery Section */}
           <div className="mt-20">
-            <div className="flex justify-between items-end mb-10">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3 mb-8 md:mb-10">
               <div>
                 <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-1 tracking-tight transition-colors">Discover Kitchen Artisans</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm font-medium transition-colors">Top-rated kitchens curated just for you this week.</p>
@@ -315,7 +315,7 @@ const DashboardPage = () => {
                 View Map
               </Link>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {[
                 { name: 'Annapurna Kitchen', rating: '4.9', dishes: '24' },
                 { name: 'Royal Tiffins', rating: '4.7', dishes: '18' },
@@ -337,12 +337,12 @@ const DashboardPage = () => {
           </div>
 
           {/* Improved Footer */}
-          <footer className="mt-32 pt-12 border-t border-gray-100 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-8 text-gray-400 text-[10px] font-bold pb-20">
-            <div className="flex items-center gap-10">
+          <footer className="mt-16 md:mt-32 pt-8 md:pt-12 border-t border-gray-100 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8 text-gray-400 text-[10px] font-bold pb-10 md:pb-20">
+            <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-10 text-center sm:text-left">
               <span className="text-gray-900 dark:text-white text-sm font-black tracking-tight">swadSetu<span className="text-orange-500">.</span></span>
               <span className="font-medium text-gray-400 dark:text-gray-500">© 2024 SwadSetu. Built for honesty and clarity.</span>
             </div>
-            <div className="flex gap-8 uppercase tracking-widest">
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-8 uppercase tracking-widest">
               <Link to="/support" className="hover:text-orange-500 transition-colors">Help Center</Link>
               <Link to="/privacy" className="hover:text-orange-500 transition-colors">Privacy Policy</Link>
               <Link to="/contact" className="hover:text-orange-500 transition-colors">Contact Us</Link>

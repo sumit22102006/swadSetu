@@ -127,13 +127,13 @@ const MealPlanPage = () => {
           </div>
         )}
         {/* Header from Dashboard for consistency */}
-        <header className="bg-[#121212] dark:bg-[#000000] px-8 py-4 flex justify-between items-center sticky top-0 z-40 shadow-xl transition-colors">
+        <header className="bg-[#121212] dark:bg-[#000000] pl-16 lg:pl-8 pr-4 sm:pr-8 py-4 flex justify-between items-center sticky top-0 z-40 shadow-xl transition-colors">
           <div className="flex items-center gap-3">
             <div className="w-2.5 h-2.5 bg-orange-500 rounded-full animate-pulse"></div>
             <span className="text-xl font-bold text-white tracking-tight">swadSetu</span>
           </div>
-          <div className="flex items-center gap-6">
-            <div className="bg-orange-500/10 border border-orange-500/20 px-3 py-1.5 rounded-full text-[10px] font-bold text-orange-400 uppercase tracking-widest flex items-center gap-2">
+          <div className="flex items-center gap-2 sm:gap-6">
+            <div className="hidden sm:flex bg-orange-500/10 border border-orange-500/20 px-3 py-1.5 rounded-full text-[10px] font-bold text-orange-400 uppercase tracking-widest items-center gap-2">
               <Star className="w-3 h-3 fill-orange-400" />
               Standard Plan
             </div>
@@ -148,7 +148,7 @@ const MealPlanPage = () => {
           </div>
         </header>
 
-        <main className="p-8 lg:p-12 w-full mx-auto">
+        <main className="p-4 sm:p-8 lg:p-12 w-full mx-auto">
           <div className="bg-white dark:bg-gray-900 w-full rounded-3xl shadow-sm border border-gray-100 dark:border-gray-800 p-8 md:p-12 text-gray-900 dark:text-white transition-colors">
 
         {/* Header Section */}
@@ -196,7 +196,7 @@ const MealPlanPage = () => {
             </button>
           </div>
 
-          <div className="flex gap-3 text-[11px] font-bold">
+          <div className="flex flex-wrap gap-2 text-[11px] font-bold">
             <button onClick={handleCopyLastWeek} className="border border-gray-200 px-4 py-2 hover:bg-gray-50 transition-colors active:scale-95">
               Copy last week
             </button>

@@ -72,17 +72,17 @@ const SupportPage = () => {
         <div className="absolute top-0 right-0 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl -mr-20 -mt-20"></div>
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange-500/5 rounded-full blur-3xl -ml-20 -mb-20"></div>
 
-        <div className="max-w-6xl mx-auto flex justify-between items-center mb-16 relative z-10">
+        <div className="max-w-6xl mx-auto flex flex-wrap justify-between items-center mb-10 md:mb-16 gap-4 relative z-10">
           <Link to="/" className="flex items-center gap-2 group">
             <div className="p-2 bg-white/5 rounded-full group-hover:bg-white/10 transition-all">
               <ArrowLeft size={18} className="text-orange-500" />
             </div>
             <span className="text-xs font-bold uppercase tracking-widest text-gray-400 group-hover:text-white transition-colors">Back to Home</span>
           </Link>
-          <div className="text-2xl font-black tracking-tight">swadSetu<span className="text-orange-500">.</span></div>
-          <div className="flex items-center gap-4">
+          <div className="text-xl md:text-2xl font-black tracking-tight">swadSetu<span className="text-orange-500">.</span></div>
+          <div className="flex items-center gap-2 sm:gap-4">
             <ThemeToggle />
-            <div className="bg-orange-500/10 border border-orange-500/20 px-4 py-1.5 rounded-full text-[10px] font-bold text-orange-400 uppercase tracking-widest cursor-pointer hover:bg-orange-500/20 transition-all">
+            <div className="hidden sm:block bg-orange-500/10 border border-orange-500/20 px-4 py-1.5 rounded-full text-[10px] font-bold text-orange-400 uppercase tracking-widest cursor-pointer hover:bg-orange-500/20 transition-all">
               My Tickets
             </div>
             <Link to="/profile" className="w-9 h-9 bg-orange-500 rounded-full flex items-center justify-center text-white cursor-pointer overflow-hidden ring-2 ring-white/10 hover:ring-orange-500/50 transition-all">
@@ -96,8 +96,8 @@ const SupportPage = () => {
         </div>
 
         <div className="max-w-3xl mx-auto text-center relative z-10">
-          <h1 className="text-4xl md:text-5xl font-black mb-6 tracking-tight">How can we help?</h1>
-          <p className="text-sm md:text-base text-gray-400 mb-10 max-w-xl mx-auto leading-relaxed font-medium">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4 md:mb-6 tracking-tight">How can we help?</h1>
+          <p className="text-sm md:text-base text-gray-400 mb-8 md:mb-10 max-w-xl mx-auto leading-relaxed font-medium">
             Search for articles or choose a topic below to get the help you need for your daily artisan tiffin service.
           </p>
           
@@ -106,9 +106,9 @@ const SupportPage = () => {
             <input 
               type="text" 
               placeholder="Search for 'delivery status', 'cancel meal', 'refund'..." 
-              className="w-full py-5 pl-8 pr-36 rounded-2xl bg-white dark:bg-gray-900 text-gray-900 dark:text-white shadow-2xl border-none outline-none text-sm placeholder:text-gray-400 relative z-10 font-medium transition-colors"
+              className="w-full py-4 md:py-5 pl-5 md:pl-8 pr-4 md:pr-36 rounded-2xl bg-white dark:bg-gray-900 text-gray-900 dark:text-white shadow-2xl border-none outline-none text-sm placeholder:text-gray-400 relative z-10 font-medium transition-colors"
             />
-            <button className="absolute right-2 top-2 bottom-2 bg-orange-600 hover:bg-orange-700 text-white px-8 rounded-xl transition-all text-xs font-black uppercase tracking-widest relative z-20">
+            <button className="hidden md:block absolute right-2 top-2 bottom-2 bg-orange-600 hover:bg-orange-700 text-white px-8 rounded-xl transition-all text-xs font-black uppercase tracking-widest relative z-20">
               Search
             </button>
           </div>
@@ -116,7 +116,7 @@ const SupportPage = () => {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-6 -mt-12 relative z-20">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 -mt-12 relative z-20">
         {/* Contact Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
           {[
@@ -293,7 +293,7 @@ const SupportPage = () => {
         </div>
 
         {/* System Status */}
-        <section className="bg-[#121212] rounded-3xl p-8 text-white flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl relative overflow-hidden">
+        <section className="bg-[#121212] rounded-3xl p-6 md:p-8 text-white flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-8 shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 left-0 w-32 h-32 bg-orange-500/5 rounded-full blur-3xl"></div>
           <div className="flex items-center gap-5 relative z-10">
             <span className="font-black text-sm uppercase tracking-widest">System Status</span>
@@ -303,7 +303,7 @@ const SupportPage = () => {
             </div>
           </div>
           
-          <div className="flex flex-wrap gap-8 relative z-10">
+          <div className="flex flex-wrap gap-4 md:gap-8 relative z-10">
             {[
               { name: "Ordering", status: "Operational", color: "text-green-400" },
               { name: "Tracking", status: "Slight delay", color: "text-orange-400" },
@@ -320,12 +320,12 @@ const SupportPage = () => {
       </main>
 
       {/* Footer */}
-      <footer className="max-w-6xl mx-auto px-6 mt-32 pt-12 border-t border-gray-100 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-8 text-gray-400 text-[10px] font-bold pb-20">
-        <div className="flex items-center gap-10">
+      <footer className="max-w-6xl mx-auto px-4 sm:px-6 mt-20 md:mt-32 pt-8 md:pt-12 border-t border-gray-100 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8 text-gray-400 text-[10px] font-bold pb-10 md:pb-20">
+        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-10 text-center sm:text-left">
           <span className="text-gray-900 dark:text-white text-sm font-black tracking-tight">swadSetu<span className="text-orange-500">.</span></span>
           <span className="font-medium text-gray-400 dark:text-gray-500">© 2024 SwadSetu. Built for honesty and clarity.</span>
         </div>
-        <div className="flex gap-8 uppercase tracking-widest transition-colors">
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-8 uppercase tracking-widest transition-colors">
           <Link to="/support" className="text-gray-900 dark:text-white transition-colors">Help Center</Link>
           <Link to="/privacy" className="hover:text-gray-900 dark:hover:text-white transition-colors">Privacy Policy</Link>
           <Link to="/contact" className="hover:text-gray-900 dark:hover:text-white transition-colors">Contact Us</Link>

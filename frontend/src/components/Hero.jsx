@@ -12,14 +12,14 @@ const Hero = () => {
       
       <div className="container relative z-10">
         <div className="max-w-[600px]">
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-5">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight mb-4 md:mb-5">
             The Warmth of a Home-Cooked Meal, Delivered.
           </h1>
-          <p className="text-lg mb-9 opacity-90">
+          <p className="text-base md:text-lg mb-7 md:mb-9 opacity-90">
             Experience authentic regional flavors prepared by local kitchen artisans. Sustainable, healthy, and crafted with the care of a home kitchen.
           </p>
-          <div className="flex gap-4">
-            <Link to="/signup" className="btn btn-primary">Explore Our Plans</Link>
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <Link to="/signup" className="btn btn-primary text-center">Explore Our Plans</Link>
             <button className="btn btn-outline">View Menu</button>
           </div>
         </div>

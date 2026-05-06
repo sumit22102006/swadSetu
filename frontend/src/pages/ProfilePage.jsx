@@ -28,8 +28,6 @@ const ProfilePage = () => {
   const [editPhone, setEditPhone] = useState('');
   const [uploadingImage, setUploadingImage] = useState(false);
   const [imagePreview, setImagePreview] = useState('');
-  
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -112,16 +110,16 @@ const ProfilePage = () => {
 
       <div className="flex-1 flex flex-col">
         {/* Header */}
-        <header className="bg-[#121212] dark:bg-[#000000] px-8 py-4 flex justify-between items-center sticky top-0 z-40 shadow-xl transition-colors">
+        <header className="bg-[#121212] dark:bg-[#000000] pl-16 lg:pl-8 pr-4 sm:pr-8 py-4 flex justify-between items-center sticky top-0 z-40 shadow-xl transition-colors">
           <div className="flex items-center gap-3">
             <div className="w-2.5 h-2.5 bg-orange-500 rounded-full animate-pulse"></div>
-            <span className="text-xl font-bold text-white tracking-tight">Your Profile</span>
+            <span className="text-lg sm:text-xl font-bold text-white tracking-tight">Your Profile</span>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             <ThemeToggle />
             <button
               onClick={logoutHandler}
-              className="flex items-center gap-2 bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 text-red-400 hover:text-red-300 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-widest transition-all"
+              className="hidden sm:flex items-center gap-2 bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 text-red-400 hover:text-red-300 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-widest transition-all"
             >
               <LogOut className="w-4 h-4" />
               Logout
@@ -137,7 +135,7 @@ const ProfilePage = () => {
         </header>
 
         {/* Content */}
-        <main className="p-8 md:p-12 overflow-y-auto">
+        <main className="p-4 sm:p-8 md:p-12 overflow-y-auto">
           <div className="max-w-4xl mx-auto">
             {/* Hero Profile Card */}
             <div className="bg-white dark:bg-[#121212] rounded-[2.5rem] p-10 border border-gray-100 dark:border-gray-800 shadow-sm relative overflow-hidden transition-all duration-300">
@@ -229,7 +227,7 @@ const ProfilePage = () => {
               </div>
             </div>
 
-            <div className="mt-8 flex flex-col md:flex-row gap-4">
+            <div className="mt-8 flex flex-col gap-4">
               <div className="flex-1 bg-[#121212] dark:bg-[#000000] rounded-[2.5rem] p-8 text-white flex flex-col md:flex-row items-center justify-between gap-6 transition-colors shadow-2xl">
                 <div>
                   <h3 className="text-xl font-black tracking-tight mb-1">Upgrade to Premium</h3>
