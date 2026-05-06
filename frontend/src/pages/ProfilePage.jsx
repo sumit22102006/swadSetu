@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { 
-  User, Camera, Edit3, Loader, X, Mail, Phone, Shield, ExternalLink, MapPin, LogOut
+  User, Camera, Edit3, Loader, X, Mail, Phone, Shield, ExternalLink, MapPin, LogOut, Menu
 } from 'lucide-react';
 import ThemeToggle from '../components/ThemeToggle';
 import Sidebar from '../components/Sidebar';
@@ -21,6 +21,7 @@ const ProfilePage = () => {
   const { isLoading } = useSelector((state) => state.ui);
   
   const [isEditing, setIsEditing] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   
   // Edit form state
   const [editName, setEditName] = useState('');
@@ -106,12 +107,19 @@ const ProfilePage = () => {
   return (
     <div className="flex min-h-screen bg-[#f8f9fa] dark:bg-gray-950 text-gray-800 dark:text-gray-200 font-sans transition-colors duration-300">
       <SEO title="My Profile" url="/profile" />
-      <Sidebar />
+      <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
 
       <div className="flex-1 flex flex-col">
         {/* Header */}
-        <header className="bg-[#121212] dark:bg-[#000000] pl-16 xl:pl-8 pr-4 sm:pr-8 py-4 flex justify-between items-center sticky top-0 z-40 shadow-xl transition-colors">
+        <header className="bg-[#121212] dark:bg-[#000000] px-4 sm:px-8 py-4 flex justify-between items-center sticky top-0 z-40 shadow-xl transition-colors">
           <div className="flex items-center gap-3">
+            <button
+              onClick={() => setSidebarOpen(true)}
+              className="xl:hidden p-2 rounded-xl hover:bg-white/10 text-gray-300 transition-colors"
+              aria-label="Open sidebar"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
             <div className="w-2.5 h-2.5 bg-orange-500 rounded-full animate-pulse"></div>
             <span className="text-lg sm:text-xl font-bold text-white tracking-tight">Your Profile</span>
           </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { API_URL } from '../services/api';
@@ -9,14 +9,12 @@ import {
   Settings, 
   HelpCircle,
   User,
-  Menu,
   X
 } from 'lucide-react';
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, setIsOpen }) => {
   const location = useLocation();
   const { userInfo } = useSelector((state) => state.auth);
-  const [isOpen, setIsOpen] = useState(false);
 
   const menuItems = [
     { name: 'Dashboard', icon: <LayoutDashboard className="w-5 h-5" />, path: '/dashboard' },
@@ -41,7 +39,7 @@ const Sidebar = () => {
             <Link
               key={item.name}
               to={item.path}
-              onClick={() => setIsOpen(false)}
+              onClick={() => setIsOpen && setIsOpen(false)}
               className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all relative ${
                 isActive 
                 ? 'text-orange-500 bg-orange-50 dark:bg-orange-500/10 font-bold' 
@@ -62,7 +60,7 @@ const Sidebar = () => {
 
       {/* User Profile Footer */}
       <div className="mt-auto pt-6 border-t border-gray-100 dark:border-gray-800">
-        <Link to="/profile" onClick={() => setIsOpen(false)} className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-900 transition-all group">
+        <Link to="/profile" onClick={() => setIsOpen && setIsOpen(false)} className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-900 transition-all group">
           <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-white overflow-hidden ring-2 ring-transparent group-hover:ring-orange-500/20 transition-all">
             {userInfo?.profileImage ? (
               <img src={`${API_URL}/api${userInfo.profileImage}`} alt="Profile" className="w-full h-full object-cover" />
@@ -81,28 +79,19 @@ const Sidebar = () => {
 
   return (
     <>
-      {/* Mobile Hamburger Button - shown inside page header area */}
-      <button
-        onClick={() => setIsOpen(true)}
-        className="xl:hidden fixed top-3 left-4 z-50 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl p-2.5 shadow-md"
-        aria-label="Open sidebar"
-      >
-        <Menu className="w-5 h-5 text-gray-600 dark:text-gray-300" />
-      </button>
-
-      {/* Mobile Overlay */}
+      {/* Mobile + Tablet Overlay */}
       {isOpen && (
         <div 
           className="xl:hidden fixed inset-0 bg-black/50 z-40 backdrop-blur-sm"
-          onClick={() => setIsOpen(false)}
+          onClick={() => setIsOpen && setIsOpen(false)}
         />
       )}
 
-      {/* Mobile + Tablet Sidebar (Drawer) */}
+      {/* Mobile + Tablet Sidebar Drawer */}
       <div className={`xl:hidden fixed top-0 left-0 h-full w-72 bg-white dark:bg-[#0a0a0a] border-r border-gray-100 dark:border-gray-800 p-6 z-50 flex flex-col transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         {/* Close button */}
         <button
-          onClick={() => setIsOpen(false)}
+          onClick={() => setIsOpen && setIsOpen(false)}
           className="self-end mb-4 p-1.5 text-gray-400 hover:text-gray-700 dark:hover:text-white transition-colors"
           aria-label="Close sidebar"
         >

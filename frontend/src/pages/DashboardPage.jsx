@@ -15,7 +15,8 @@ import {
   Heart,
   X,
   RefreshCw,
-  Check
+  Check,
+  Menu
 } from 'lucide-react';
 import SEO from '../components/SEO';
 
@@ -26,6 +27,7 @@ const DashboardPage = () => {
   const [deliveryTime, setDeliveryTime] = useState('1:00 PM');
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
   const [activeBadge, setActiveBadge] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   
   const [swapsLeft, setSwapsLeft] = useState(3);
   const [isSwapModalOpen, setIsSwapModalOpen] = useState(false);
@@ -71,12 +73,20 @@ const DashboardPage = () => {
   return (
     <div className="flex min-h-screen bg-[#f8f9fa] dark:bg-[#0f0f0f] text-gray-800 dark:text-gray-200 font-sans transition-colors duration-300">
       <SEO title="Dashboard" url="/dashboard" />
-      <Sidebar />
+      <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
 
       <div className="flex-1 flex flex-col">
         {/* Header */}
-        <header className="bg-white dark:bg-[#000000] pl-16 xl:pl-8 pr-4 sm:pr-8 py-4 flex justify-between items-center sticky top-0 z-40 shadow-sm dark:shadow-xl border-b border-gray-100 dark:border-white/5 transition-colors duration-300">
+        <header className="bg-white dark:bg-[#000000] px-4 sm:px-8 py-4 flex justify-between items-center sticky top-0 z-40 shadow-sm dark:shadow-xl border-b border-gray-100 dark:border-white/5 transition-colors duration-300">
           <div className="flex items-center gap-3">
+            {/* Hamburger — only shown below xl breakpoint */}
+            <button
+              onClick={() => setSidebarOpen(true)}
+              className="xl:hidden p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300 transition-colors"
+              aria-label="Open sidebar"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
             <div className="w-2.5 h-2.5 bg-orange-500 rounded-full animate-pulse"></div>
             <span className="text-xl font-bold text-gray-900 dark:text-white tracking-tight transition-colors">swadSetu</span>
           </div>
