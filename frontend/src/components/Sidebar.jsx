@@ -84,7 +84,7 @@ const Sidebar = () => {
       {/* Mobile Hamburger Button - shown inside page header area */}
       <button
         onClick={() => setIsOpen(true)}
-        className="lg:hidden fixed top-3 left-4 z-50 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl p-2.5 shadow-md"
+        className="xl:hidden fixed top-3 left-4 z-50 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl p-2.5 shadow-md"
         aria-label="Open sidebar"
       >
         <Menu className="w-5 h-5 text-gray-600 dark:text-gray-300" />
@@ -93,13 +93,13 @@ const Sidebar = () => {
       {/* Mobile Overlay */}
       {isOpen && (
         <div 
-          className="lg:hidden fixed inset-0 bg-black/50 z-40 backdrop-blur-sm"
+          className="xl:hidden fixed inset-0 bg-black/50 z-40 backdrop-blur-sm"
           onClick={() => setIsOpen(false)}
         />
       )}
 
-      {/* Mobile Sidebar (Drawer) */}
-      <div className={`lg:hidden fixed top-0 left-0 h-full w-72 bg-white dark:bg-[#0a0a0a] border-r border-gray-100 dark:border-gray-800 p-6 z-50 flex flex-col transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+      {/* Mobile + Tablet Sidebar (Drawer) */}
+      <div className={`xl:hidden fixed top-0 left-0 h-full w-72 bg-white dark:bg-[#0a0a0a] border-r border-gray-100 dark:border-gray-800 p-6 z-50 flex flex-col transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         {/* Close button */}
         <button
           onClick={() => setIsOpen(false)}
@@ -111,8 +111,8 @@ const Sidebar = () => {
         <SidebarContent />
       </div>
 
-      {/* Desktop Sidebar (always visible) */}
-      <div className="hidden lg:flex w-64 bg-white dark:bg-[#0a0a0a] border-r border-gray-100 dark:border-gray-800 min-h-screen p-6 flex-col transition-colors duration-300 shrink-0">
+      {/* Desktop Sidebar (always visible, xl and above) */}
+      <div className="hidden xl:flex w-64 bg-white dark:bg-[#0a0a0a] border-r border-gray-100 dark:border-gray-800 min-h-screen p-6 flex-col transition-colors duration-300 shrink-0">
         <SidebarContent />
       </div>
     </>

@@ -75,7 +75,7 @@ const DashboardPage = () => {
 
       <div className="flex-1 flex flex-col">
         {/* Header */}
-        <header className="bg-white dark:bg-[#000000] pl-16 lg:pl-8 pr-4 sm:pr-8 py-4 flex justify-between items-center sticky top-0 z-40 shadow-sm dark:shadow-xl border-b border-gray-100 dark:border-white/5 transition-colors duration-300">
+        <header className="bg-white dark:bg-[#000000] pl-16 xl:pl-8 pr-4 sm:pr-8 py-4 flex justify-between items-center sticky top-0 z-40 shadow-sm dark:shadow-xl border-b border-gray-100 dark:border-white/5 transition-colors duration-300">
           <div className="flex items-center gap-3">
             <div className="w-2.5 h-2.5 bg-orange-500 rounded-full animate-pulse"></div>
             <span className="text-xl font-bold text-gray-900 dark:text-white tracking-tight transition-colors">swadSetu</span>
@@ -109,7 +109,7 @@ const DashboardPage = () => {
         </header>
 
         {/* Main Content */}
-        <main className="p-4 sm:p-8 lg:p-12 max-w-6xl w-full mx-auto">
+        <main className="p-4 sm:p-8 xl:p-12 max-w-6xl w-full mx-auto">
           {/* Greeting & Quick Actions */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 md:mb-12 gap-4 md:gap-6">
             <div>
@@ -141,9 +141,9 @@ const DashboardPage = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10">
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 xl:gap-10">
             {/* Left Main Content */}
-            <div className="lg:col-span-2 space-y-10">
+            <div className="xl:col-span-2 space-y-10">
               {/* Stats Cards */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-gray-100/50 dark:border-gray-800 group hover:shadow-md transition-all">

@@ -173,7 +173,7 @@ const SupportPage = () => {
             <div className="w-8 h-1 bg-orange-500 rounded-full"></div>
             <h2 className="text-2xl font-black tracking-tight text-gray-900 dark:text-white transition-colors">Browse by Topic</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {topics.map((topic, i) => (
               <div key={i} className="bg-white p-6 rounded-2xl border border-gray-100 flex items-center justify-between hover:border-orange-200 hover:shadow-lg hover:shadow-gray-100 cursor-pointer transition-all group">
                 <div className="flex items-center gap-5">
@@ -192,9 +192,9 @@ const SupportPage = () => {
         </section>
 
         {/* FAQ & Form Split */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-20">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-12 mb-20">
           {/* FAQ Accordion */}
-          <div className="lg:col-span-2">
+          <div className="xl:col-span-2">
             <h2 className="text-2xl font-black mb-10 tracking-tight flex items-center gap-3">
                <div className="w-2 h-8 bg-gray-900 rounded-full"></div>
                Common Questions

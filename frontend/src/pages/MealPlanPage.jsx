@@ -127,7 +127,7 @@ const MealPlanPage = () => {
           </div>
         )}
         {/* Header from Dashboard for consistency */}
-        <header className="bg-[#121212] dark:bg-[#000000] pl-16 lg:pl-8 pr-4 sm:pr-8 py-4 flex justify-between items-center sticky top-0 z-40 shadow-xl transition-colors">
+        <header className="bg-[#121212] dark:bg-[#000000] pl-16 xl:pl-8 pr-4 sm:pr-8 py-4 flex justify-between items-center sticky top-0 z-40 shadow-xl transition-colors">
           <div className="flex items-center gap-3">
             <div className="w-2.5 h-2.5 bg-orange-500 rounded-full animate-pulse"></div>
             <span className="text-xl font-bold text-white tracking-tight">swadSetu</span>
@@ -148,7 +148,7 @@ const MealPlanPage = () => {
           </div>
         </header>
 
-        <main className="p-4 sm:p-8 lg:p-12 w-full mx-auto">
+        <main className="p-4 sm:p-8 xl:p-12 w-full mx-auto">
           <div className="bg-white dark:bg-gray-900 w-full rounded-3xl shadow-sm border border-gray-100 dark:border-gray-800 p-8 md:p-12 text-gray-900 dark:text-white transition-colors">
 
         {/* Header Section */}
@@ -257,10 +257,10 @@ const MealPlanPage = () => {
         </div>
 
         {/* Main Grid Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
           
           {/* Left Area (Cards) - Takes up 2 columns */}
-          <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-max">
+          <div className="xl:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-max">
             
             {/* Card 1: Today */}
             <div className="border border-gray-200 dark:border-gray-800 flex flex-col h-full bg-white dark:bg-gray-900 transition-colors">

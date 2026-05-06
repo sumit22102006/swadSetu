@@ -110,7 +110,7 @@ const ProfilePage = () => {
 
       <div className="flex-1 flex flex-col">
         {/* Header */}
-        <header className="bg-[#121212] dark:bg-[#000000] pl-16 lg:pl-8 pr-4 sm:pr-8 py-4 flex justify-between items-center sticky top-0 z-40 shadow-xl transition-colors">
+        <header className="bg-[#121212] dark:bg-[#000000] pl-16 xl:pl-8 pr-4 sm:pr-8 py-4 flex justify-between items-center sticky top-0 z-40 shadow-xl transition-colors">
           <div className="flex items-center gap-3">
             <div className="w-2.5 h-2.5 bg-orange-500 rounded-full animate-pulse"></div>
             <span className="text-lg sm:text-xl font-bold text-white tracking-tight">Your Profile</span>
@@ -135,7 +135,7 @@ const ProfilePage = () => {
         </header>
 
         {/* Content */}
-        <main className="p-4 sm:p-8 md:p-12 overflow-y-auto">
+        <main className="p-4 sm:p-8 xl:p-12 overflow-y-auto">
           <div className="max-w-4xl mx-auto">
             {/* Hero Profile Card */}
             <div className="bg-white dark:bg-[#121212] rounded-[2.5rem] p-10 border border-gray-100 dark:border-gray-800 shadow-sm relative overflow-hidden transition-all duration-300">
